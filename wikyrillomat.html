@@ -42,705 +42,715 @@ function radioValue(rObj) {
 
 function transcribe (){
 var language = radioValue(document.theForm.languageRadio);
-var target = document.getElementById("source").value;
-var transliteration = document.getElementById("source").value;
+var source = document.getElementById("source").value;
+var transcription = source;
+var transliteration = source;
 switch (language) {
 
 case "bg":
+  var language = "bg";
   // ab hier wird ganz doof Regel nach Regel abgearbeitet
   // Regeln für Transkription
   // Sonderfälle
-  var target = target.replace(/Алекс/g, "Alex"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Оксан/g, "Oxan"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Ксен/g, "Xen"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Макс/g, "Max"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Феликс/g, "Felix"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/([АЕИЙОУЪЯЁЮаеийоуъяёю])с([аеийоуъьяёю])/g, "$1ss$2"); // с zwischen zwei von аеийоуъяёю = ss
-  var target = target.replace(/ь([аеиоуъ])/g, "j$1"); // ь vor Vokal = j
+  var transcription = transcription.replace(/Алекс/g, "Alex"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Оксан/g, "Oxan"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Ксен/g, "Xen"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Макс/g, "Max"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Феликс/g, "Felix"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/([АЕИЙОУЪЯЁЮаеийоуъяёю])с([аеийоуъьяёю])/g, "$1ss$2"); // с zwischen zwei von аеийоуъяёю = ss
+  var transcription = transcription.replace(/ь([аеиоуъ])/g, "j$1"); // ь vor Vokal = j
   // Einzelbuchstaben
-  var target = target.replace(/А/g, "A");
-  var target = target.replace(/Б/g, "B");
-  var target = target.replace(/В/g, "W");
-  var target = target.replace(/Г/g, "G");
-  var target = target.replace(/Д/g, "D");
-  var target = target.replace(/Е/g, "E");
-  var target = target.replace(/Ж/g, "Sch");
-  var target = target.replace(/З/g, "S");
-  var target = target.replace(/И/g, "I");
-  var target = target.replace(/Й/g, "J");
-  var target = target.replace(/К/g, "K");
-  var target = target.replace(/Л/g, "L");
-  var target = target.replace(/М/g, "M");
-  var target = target.replace(/Н/g, "N");
-  var target = target.replace(/О/g, "O");
-  var target = target.replace(/П/g, "P");
-  var target = target.replace(/Р/g, "R");
-  var target = target.replace(/С/g, "S");
-  var target = target.replace(/Т/g, "T");
-  var target = target.replace(/У/g, "U");
-  var target = target.replace(/Ф/g, "F");
-  var target = target.replace(/Х/g, "Ch");
-  var target = target.replace(/Ц/g, "Z");
-  var target = target.replace(/Ч/g, "Tsch");
-  var target = target.replace(/Ш/g, "Sch");
-  var target = target.replace(/Щ/g, "Scht");
-  var target = target.replace(/Ъ/g, "A");
-  var target = target.replace(/Ю/g, "Ju");
-  var target = target.replace(/Я/g, "Ja");
-  var target = target.replace(/а/g, "a");
-  var target = target.replace(/б/g, "b");
-  var target = target.replace(/в/g, "w");
-  var target = target.replace(/г/g, "g");
-  var target = target.replace(/д/g, "d");
-  var target = target.replace(/е/g, "e"); 
-  var target = target.replace(/ж/g, "sch");
-  var target = target.replace(/з/g, "s");
-  var target = target.replace(/и/g, "i");
-  var target = target.replace(/й/g, "j");
-  var target = target.replace(/к/g, "k");
-  var target = target.replace(/л/g, "l");
-  var target = target.replace(/м/g, "m");
-  var target = target.replace(/н/g, "n");
-  var target = target.replace(/о/g, "o");
-  var target = target.replace(/п/g, "p");
-  var target = target.replace(/р/g, "r");
-  var target = target.replace(/с/g, "s");
-  var target = target.replace(/т/g, "t");
-  var target = target.replace(/у/g, "u");
-  var target = target.replace(/ф/g, "f");
-  var target = target.replace(/х/g, "ch");
-  var target = target.replace(/ц/g, "z");
-  var target = target.replace(/ч/g, "tsch");
-  var target = target.replace(/ш/g, "sch");
-  var target = target.replace(/щ/g, "scht");
-  var target = target.replace(/ъ/g, "a");
-  var target = target.replace(/ь/g, ""); 
-  var target = target.replace(/ю/g, "ju");
-  var target = target.replace(/я/g, "ja");
+  var transcription = transcription.replace(/А/g, "A");
+  var transcription = transcription.replace(/Б/g, "B");
+  var transcription = transcription.replace(/В/g, "W");
+  var transcription = transcription.replace(/Г/g, "G");
+  var transcription = transcription.replace(/Д/g, "D");
+  var transcription = transcription.replace(/Е/g, "E");
+  var transcription = transcription.replace(/Ж/g, "Sch");
+  var transcription = transcription.replace(/З/g, "S");
+  var transcription = transcription.replace(/И/g, "I");
+  var transcription = transcription.replace(/Й/g, "J");
+  var transcription = transcription.replace(/К/g, "K");
+  var transcription = transcription.replace(/Л/g, "L");
+  var transcription = transcription.replace(/М/g, "M");
+  var transcription = transcription.replace(/Н/g, "N");
+  var transcription = transcription.replace(/О/g, "O");
+  var transcription = transcription.replace(/П/g, "P");
+  var transcription = transcription.replace(/Р/g, "R");
+  var transcription = transcription.replace(/С/g, "S");
+  var transcription = transcription.replace(/Т/g, "T");
+  var transcription = transcription.replace(/У/g, "U");
+  var transcription = transcription.replace(/Ф/g, "F");
+  var transcription = transcription.replace(/Х/g, "Ch");
+  var transcription = transcription.replace(/Ц/g, "Z");
+  var transcription = transcription.replace(/Ч/g, "Tsch");
+  var transcription = transcription.replace(/Ш/g, "Sch");
+  var transcription = transcription.replace(/Щ/g, "Scht");
+  var transcription = transcription.replace(/Ъ/g, "A");
+  var transcription = transcription.replace(/Ю/g, "Ju");
+  var transcription = transcription.replace(/Я/g, "Ja");
+  var transcription = transcription.replace(/а/g, "a");
+  var transcription = transcription.replace(/б/g, "b");
+  var transcription = transcription.replace(/в/g, "w");
+  var transcription = transcription.replace(/г/g, "g");
+  var transcription = transcription.replace(/д/g, "d");
+  var transcription = transcription.replace(/е/g, "e"); 
+  var transcription = transcription.replace(/ж/g, "sch");
+  var transcription = transcription.replace(/з/g, "s");
+  var transcription = transcription.replace(/и/g, "i");
+  var transcription = transcription.replace(/й/g, "j");
+  var transcription = transcription.replace(/к/g, "k");
+  var transcription = transcription.replace(/л/g, "l");
+  var transcription = transcription.replace(/м/g, "m");
+  var transcription = transcription.replace(/н/g, "n");
+  var transcription = transcription.replace(/о/g, "o");
+  var transcription = transcription.replace(/п/g, "p");
+  var transcription = transcription.replace(/р/g, "r");
+  var transcription = transcription.replace(/с/g, "s");
+  var transcription = transcription.replace(/т/g, "t");
+  var transcription = transcription.replace(/у/g, "u");
+  var transcription = transcription.replace(/ф/g, "f");
+  var transcription = transcription.replace(/х/g, "ch");
+  var transcription = transcription.replace(/ц/g, "z");
+  var transcription = transcription.replace(/ч/g, "tsch");
+  var transcription = transcription.replace(/ш/g, "sch");
+  var transcription = transcription.replace(/щ/g, "scht");
+  var transcription = transcription.replace(/ъ/g, "a");
+  var transcription = transcription.replace(/ь/g, ""); 
+  var transcription = transcription.replace(/ю/g, "ju");
+  var transcription = transcription.replace(/я/g, "ja");
   // Regeln für die wissenschaftliche Transliteration
-  var transliteration = transliteration.replace(//g, "");
+  var transliteration = transliteration.replace(/ /g, " ");
   break;
 
 case "kk":
+  var language = "kk";
   // ab hier wird ganz doof Regel nach Regel abgearbeitet
   // Sonderfälle
-  var target = target.replace(/Александр(\s|$)/g, "Alexander$1"); // Александр = Alexander
-  var target = target.replace(/Алекс/g, "Alex"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Оксан/g, "Oxan"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Ксен/g, "Xen"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Макс/g, "Max"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Феликс/g, "Felix"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/([АӘЕІИОӨУҰҮЫЭЯЁЮаәеіиоөуұүыэяёю])е/g, "$1je"); // e nach Vokal = je
-  var target = target.replace(/ий/g, "ij"); // й nach и im Wort = j 
-  var target = target.replace(/ий(\s|$)/g, "i$1"); // й nach и am Wortende weg
-  var target = target.replace(/([АӘЕІИЙОӨУҰҮЫЭЯЁЮаәеіийоөуұүыэяёю])с([аәеіийоөуұүыэяёю])/g, "$1ss$2"); // с zwischen zwei von аәеіийоөуұүыэяёю = ss
-  var target = target.replace(/([АӘЕІИЙОӨУҰҮЫЭЯЁЮаәеіийоөуұүыэяёю])й([аәеіиоөуұүыэ])/g, "$1j$2"); // й vor а,е,о,у = j
-  var target = target.replace(/([АӘЕІИОӨУҰҮЫЭЯЁЮаәеіиоөуұүыэяёю])й/g, "$1i"); // й nach а,е,о,у = i 
-  var target = target.replace(/([цчшщ])ё/g, "$1o"); // ë nach ц,ч,ш,щ = o
-  var target = target.replace(/ь([аәеіиоөуұүыэ])/g, "j$1"); // ь vor Vokal = j
+  var transcription = transcription.replace(/Александр(\s|$)/g, "Alexander$1"); // Александр = Alexander
+  var transcription = transcription.replace(/Алекс/g, "Alex"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Оксан/g, "Oxan"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Ксен/g, "Xen"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Макс/g, "Max"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Феликс/g, "Felix"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/([АӘЕІИОӨУҰҮЫЭЯЁЮаәеіиоөуұүыэяёю])е/g, "$1je"); // e nach Vokal = je
+  var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j 
+  var transcription = transcription.replace(/ий(\s|$)/g, "i$1"); // й nach и am Wortende weg
+  var transcription = transcription.replace(/([АӘЕІИЙОӨУҰҮЫЭЯЁЮаәеіийоөуұүыэяёю])с([аәеіийоөуұүыэяёю])/g, "$1ss$2"); // с zwischen zwei von аәеіийоөуұүыэяёю = ss
+  var transcription = transcription.replace(/([АӘЕІИЙОӨУҰҮЫЭЯЁЮаәеіийоөуұүыэяёю])й([аәеіиоөуұүыэ])/g, "$1j$2"); // й vor а,е,о,у = j
+  var transcription = transcription.replace(/([АӘЕІИОӨУҰҮЫЭЯЁЮаәеіиоөуұүыэяёю])й/g, "$1i"); // й nach а,е,о,у = i 
+  var transcription = transcription.replace(/([цчшщ])ё/g, "$1o"); // ë nach ц,ч,ш,щ = o
+  var transcription = transcription.replace(/ь([аәеіиоөуұүыэ])/g, "j$1"); // ь vor Vokal = j
   // Einzelbuchstaben
-  var target = target.replace(/А/g, "A");
-  var target = target.replace(/Ә/g, "Ä");
-  var target = target.replace(/Б/g, "B");
-  var target = target.replace(/В/g, "W");
-  var target = target.replace(/Г/g, "G");
-  var target = target.replace(/Ғ/g, "Gh");
-  var target = target.replace(/Д/g, "D");
-  var target = target.replace(/Е/g, "Je");
-  var target = target.replace(/Ё/g, "Jo");
-  var target = target.replace(/Ж/g, "Sch");
-  var target = target.replace(/З/g, "S");
-  var target = target.replace(/І/g, "I");
-  var target = target.replace(/И/g, "I");
-  var target = target.replace(/Й/g, "J");
-  var target = target.replace(/К/g, "K");
-  var target = target.replace(/Қ/g, "Q");
-  var target = target.replace(/Л/g, "L");
-  var target = target.replace(/М/g, "M");
-  var target = target.replace(/Н/g, "N");
-  var target = target.replace(/Ң/g, "Ng");
-  var target = target.replace(/О/g, "O");
-  var target = target.replace(/Ө/g, "Ö");
-  var target = target.replace(/П/g, "P");
-  var target = target.replace(/Р/g, "R");
-  var target = target.replace(/С/g, "S");
-  var target = target.replace(/Т/g, "T");
-  var target = target.replace(/У/g, "U");
-  var target = target.replace(/Ұ/g, "U");
-  var target = target.replace(/Ү/g, "Ü");
-  var target = target.replace(/Ф/g, "F");
-  var target = target.replace(/Х/g, "Ch");
-  var target = target.replace(/Һ/g, "H");
-  var target = target.replace(/Ц/g, "Z");
-  var target = target.replace(/Ч/g, "Tsch");
-  var target = target.replace(/Ш/g, "Sch");
-  var target = target.replace(/Щ/g, "Schtsch");
-  var target = target.replace(/Ы/g, "Y");
-  var target = target.replace(/Э/g, "E");
-  var target = target.replace(/Ю/g, "Ju");
-  var target = target.replace(/Я/g, "Ja");
-  var target = target.replace(/а/g, "a");
-  var target = target.replace(/ә/g, "ä");
-  var target = target.replace(/б/g, "b");
-  var target = target.replace(/в/g, "w");
-  var target = target.replace(/г/g, "g");
-  var target = target.replace(/ғ/g, "gh");
-  var target = target.replace(/д/g, "d");
-  var target = target.replace(/е/g, "e"); 
-  var target = target.replace(/ё/g, "jo");
-  var target = target.replace(/ж/g, "sch");
-  var target = target.replace(/з/g, "s");
-  var target = target.replace(/і/g, "i");
-  var target = target.replace(/и/g, "i");
-  var target = target.replace(/й/g, "j");
-  var target = target.replace(/к/g, "k");
-  var target = target.replace(/қ/g, "q");
-  var target = target.replace(/л/g, "l");
-  var target = target.replace(/м/g, "m");
-  var target = target.replace(/н/g, "n");
-  var target = target.replace(/ң/g, "ng");
-  var target = target.replace(/о/g, "o");
-  var target = target.replace(/ө/g, "ö");
-  var target = target.replace(/п/g, "p");
-  var target = target.replace(/р/g, "r");
-  var target = target.replace(/с/g, "s");
-  var target = target.replace(/т/g, "t");
-  var target = target.replace(/у/g, "u");
-  var target = target.replace(/ұ/g, "u");
-  var target = target.replace(/ү/g, "ü");
-  var target = target.replace(/ф/g, "f");
-  var target = target.replace(/х/g, "ch");
-  var target = target.replace(/һ/g, "h");
-  var target = target.replace(/ц/g, "z");
-  var target = target.replace(/ч/g, "tsch");
-  var target = target.replace(/ш/g, "sch");
-  var target = target.replace(/щ/g, "schtsch");
-  var target = target.replace(/ъ/g, "");
-  var target = target.replace(/ы/g, "y");
-  var target = target.replace(/ь/g, ""); 
-  var target = target.replace(/э/g, "e");
-  var target = target.replace(/ю/g, "ju");
-  var target = target.replace(/я/g, "ja");
+  var transcription = transcription.replace(/А/g, "A");
+  var transcription = transcription.replace(/Ә/g, "Ä");
+  var transcription = transcription.replace(/Б/g, "B");
+  var transcription = transcription.replace(/В/g, "W");
+  var transcription = transcription.replace(/Г/g, "G");
+  var transcription = transcription.replace(/Ғ/g, "Gh");
+  var transcription = transcription.replace(/Д/g, "D");
+  var transcription = transcription.replace(/Е/g, "Je");
+  var transcription = transcription.replace(/Ё/g, "Jo");
+  var transcription = transcription.replace(/Ж/g, "Sch");
+  var transcription = transcription.replace(/З/g, "S");
+  var transcription = transcription.replace(/І/g, "I");
+  var transcription = transcription.replace(/И/g, "I");
+  var transcription = transcription.replace(/Й/g, "J");
+  var transcription = transcription.replace(/К/g, "K");
+  var transcription = transcription.replace(/Қ/g, "Q");
+  var transcription = transcription.replace(/Л/g, "L");
+  var transcription = transcription.replace(/М/g, "M");
+  var transcription = transcription.replace(/Н/g, "N");
+  var transcription = transcription.replace(/Ң/g, "Ng");
+  var transcription = transcription.replace(/О/g, "O");
+  var transcription = transcription.replace(/Ө/g, "Ö");
+  var transcription = transcription.replace(/П/g, "P");
+  var transcription = transcription.replace(/Р/g, "R");
+  var transcription = transcription.replace(/С/g, "S");
+  var transcription = transcription.replace(/Т/g, "T");
+  var transcription = transcription.replace(/У/g, "U");
+  var transcription = transcription.replace(/Ұ/g, "U");
+  var transcription = transcription.replace(/Ү/g, "Ü");
+  var transcription = transcription.replace(/Ф/g, "F");
+  var transcription = transcription.replace(/Х/g, "Ch");
+  var transcription = transcription.replace(/Һ/g, "H");
+  var transcription = transcription.replace(/Ц/g, "Z");
+  var transcription = transcription.replace(/Ч/g, "Tsch");
+  var transcription = transcription.replace(/Ш/g, "Sch");
+  var transcription = transcription.replace(/Щ/g, "Schtsch");
+  var transcription = transcription.replace(/Ы/g, "Y");
+  var transcription = transcription.replace(/Э/g, "E");
+  var transcription = transcription.replace(/Ю/g, "Ju");
+  var transcription = transcription.replace(/Я/g, "Ja");
+  var transcription = transcription.replace(/а/g, "a");
+  var transcription = transcription.replace(/ә/g, "ä");
+  var transcription = transcription.replace(/б/g, "b");
+  var transcription = transcription.replace(/в/g, "w");
+  var transcription = transcription.replace(/г/g, "g");
+  var transcription = transcription.replace(/ғ/g, "gh");
+  var transcription = transcription.replace(/д/g, "d");
+  var transcription = transcription.replace(/е/g, "e"); 
+  var transcription = transcription.replace(/ё/g, "jo");
+  var transcription = transcription.replace(/ж/g, "sch");
+  var transcription = transcription.replace(/з/g, "s");
+  var transcription = transcription.replace(/і/g, "i");
+  var transcription = transcription.replace(/и/g, "i");
+  var transcription = transcription.replace(/й/g, "j");
+  var transcription = transcription.replace(/к/g, "k");
+  var transcription = transcription.replace(/қ/g, "q");
+  var transcription = transcription.replace(/л/g, "l");
+  var transcription = transcription.replace(/м/g, "m");
+  var transcription = transcription.replace(/н/g, "n");
+  var transcription = transcription.replace(/ң/g, "ng");
+  var transcription = transcription.replace(/о/g, "o");
+  var transcription = transcription.replace(/ө/g, "ö");
+  var transcription = transcription.replace(/п/g, "p");
+  var transcription = transcription.replace(/р/g, "r");
+  var transcription = transcription.replace(/с/g, "s");
+  var transcription = transcription.replace(/т/g, "t");
+  var transcription = transcription.replace(/у/g, "u");
+  var transcription = transcription.replace(/ұ/g, "u");
+  var transcription = transcription.replace(/ү/g, "ü");
+  var transcription = transcription.replace(/ф/g, "f");
+  var transcription = transcription.replace(/х/g, "ch");
+  var transcription = transcription.replace(/һ/g, "h");
+  var transcription = transcription.replace(/ц/g, "z");
+  var transcription = transcription.replace(/ч/g, "tsch");
+  var transcription = transcription.replace(/ш/g, "sch");
+  var transcription = transcription.replace(/щ/g, "schtsch");
+  var transcription = transcription.replace(/ъ/g, "");
+  var transcription = transcription.replace(/ы/g, "y");
+  var transcription = transcription.replace(/ь/g, ""); 
+  var transcription = transcription.replace(/э/g, "e");
+  var transcription = transcription.replace(/ю/g, "ju");
+  var transcription = transcription.replace(/я/g, "ja");
   // Regeln für die wissenschaftliche Transliteration
-  var transliteration = transliteration.replace(//g, "");
+  var transliteration = transliteration.replace(/ /g, " ");
   break;
 
 case "ky":
+  var language = "ky";
   // ab hier wird ganz doof Regel nach Regel abgearbeitet
   // Sonderfälle
-  var target = target.replace(/Александр(\s|$)/g, "Alexander$1"); // Александр = Alexander
-  var target = target.replace(/Алекс/g, "Alex"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Оксан/g, "Oxan"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Ксен/g, "Xen"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Макс/g, "Max"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Феликс/g, "Felix"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/([АЕИЙОӨУҮЫЭЯЁЮаеийоөуүыэяёю])е/g, "$1je"); // e nach Vokal = je
-  var target = target.replace(/ий/g, "ij"); // й nach и im Wort = j 
-  var target = target.replace(/ий$/g, "i"); // й nach и am Wortende weg
-  var target = target.replace(/([аеиоөуүыэяёю])й/g, "$1i"); // й nach а,е,о,у = i 
-  var target = target.replace(/й[аеиоөуүыэ]/g, "ja"); // й vor а,е,о,у = j
-  var target = target.replace(/([цчшщ])ё/g, "$1o"); // ë nach ц,ч,ш,щ = o
-  var target = target.replace(/([АЕИЙОӨУҮЫЭЯЁЮаеийоөуүыэяёю])с([аеийоөуүыэяёю])/g, "$1ss$2"); // с zwischen zwei von аәеіийоөуұүыэяёю = ss
-  var target = target.replace(/ь([аеиоөуүыэ])/g, "j$1"); // ь vor Vokal = j
+  var transcription = transcription.replace(/Александр(\s|$)/g, "Alexander$1"); // Александр = Alexander
+  var transcription = transcription.replace(/Алекс/g, "Alex"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Оксан/g, "Oxan"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Ксен/g, "Xen"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Макс/g, "Max"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Феликс/g, "Felix"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/([АЕИЙОӨУҮЫЭЯЁЮаеийоөуүыэяёю])е/g, "$1je"); // e nach Vokal = je
+  var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j 
+  var transcription = transcription.replace(/ий$/g, "i"); // й nach и am Wortende weg
+  var transcription = transcription.replace(/([аеиоөуүыэяёю])й/g, "$1i"); // й nach а,е,о,у = i 
+  var transcription = transcription.replace(/й[аеиоөуүыэ]/g, "ja"); // й vor а,е,о,у = j
+  var transcription = transcription.replace(/([цчшщ])ё/g, "$1o"); // ë nach ц,ч,ш,щ = o
+  var transcription = transcription.replace(/([АЕИЙОӨУҮЫЭЯЁЮаеийоөуүыэяёю])с([аеийоөуүыэяёю])/g, "$1ss$2"); // с zwischen zwei von аәеіийоөуұүыэяёю = ss
+  var transcription = transcription.replace(/ь([аеиоөуүыэ])/g, "j$1"); // ь vor Vokal = j
   // Einzelbuchstaben
-  var target = target.replace(/А/g, "A");
-  var target = target.replace(/Б/g, "B");
-  var target = target.replace(/В/g, "W");
-  var target = target.replace(/Г/g, "G");
-  var target = target.replace(/Д/g, "D");
-  var target = target.replace(/Е/g, "Je");
-  var target = target.replace(/Ё/g, "Jo");
-  var target = target.replace(/Ж/g, "Dsch");
-  var target = target.replace(/З/g, "S");
-  var target = target.replace(/И/g, "I");
-  var target = target.replace(/Й/g, "J");
-  var target = target.replace(/К/g, "K");
-  var target = target.replace(/Л/g, "L");
-  var target = target.replace(/М/g, "M");
-  var target = target.replace(/Н/g, "N");
-  var target = target.replace(/Ң/g, "Ng");
-  var target = target.replace(/О/g, "O");
-  var target = target.replace(/Ө/g, "Ö");
-  var target = target.replace(/П/g, "P");
-  var target = target.replace(/Р/g, "R");
-  var target = target.replace(/С/g, "S");
-  var target = target.replace(/Т/g, "T");
-  var target = target.replace(/У/g, "U");
-  var target = target.replace(/Ү/g, "Ü");
-  var target = target.replace(/Ф/g, "F");
-  var target = target.replace(/Х/g, "Ch");
-  var target = target.replace(/Ц/g, "Z");
-  var target = target.replace(/Ч/g, "Tsch");
-  var target = target.replace(/Ш/g, "Sch");
-  var target = target.replace(/Щ/g, "Schtsch");
-  var target = target.replace(/Ы/g, "Y");
-  var target = target.replace(/Э/g, "E");
-  var target = target.replace(/Ю/g, "Ju");
-  var target = target.replace(/Я/g, "Ja");
-  var target = target.replace(/а/g, "a");
-  var target = target.replace(/б/g, "b");
-  var target = target.replace(/в/g, "w");
-  var target = target.replace(/г/g, "g");
-  var target = target.replace(/д/g, "d");
-  var target = target.replace(/е/g, "e"); 
-  var target = target.replace(/ё/g, "jo");
-  var target = target.replace(/ж/g, "dsch");
-  var target = target.replace(/з/g, "s");
-  var target = target.replace(/и/g, "i");
-  var target = target.replace(/й/g, "j");
-  var target = target.replace(/к/g, "k");
-  var target = target.replace(/л/g, "l");
-  var target = target.replace(/м/g, "m");
-  var target = target.replace(/н/g, "n");
-  var target = target.replace(/ң/g, "ng");
-  var target = target.replace(/о/g, "o");
-  var target = target.replace(/ө/g, "ö");
-  var target = target.replace(/п/g, "p");
-  var target = target.replace(/р/g, "r");
-  var target = target.replace(/с/g, "s");
-  var target = target.replace(/т/g, "t");
-  var target = target.replace(/у/g, "u");
-  var target = target.replace(/ү/g, "ü");
-  var target = target.replace(/ф/g, "f");
-  var target = target.replace(/х/g, "ch");
-  var target = target.replace(/ц/g, "z");
-  var target = target.replace(/ч/g, "tsch");
-  var target = target.replace(/ш/g, "sch");
-  var target = target.replace(/щ/g, "schtsch");
-  var target = target.replace(/ъ/g, "");
-  var target = target.replace(/ы/g, "y");
-  var target = target.replace(/ь/g, ""); 
-  var target = target.replace(/э/g, "e");
-  var target = target.replace(/ю/g, "ju");
-  var target = target.replace(/я/g, "ja");
+  var transcription = transcription.replace(/А/g, "A");
+  var transcription = transcription.replace(/Б/g, "B");
+  var transcription = transcription.replace(/В/g, "W");
+  var transcription = transcription.replace(/Г/g, "G");
+  var transcription = transcription.replace(/Д/g, "D");
+  var transcription = transcription.replace(/Е/g, "Je");
+  var transcription = transcription.replace(/Ё/g, "Jo");
+  var transcription = transcription.replace(/Ж/g, "Dsch");
+  var transcription = transcription.replace(/З/g, "S");
+  var transcription = transcription.replace(/И/g, "I");
+  var transcription = transcription.replace(/Й/g, "J");
+  var transcription = transcription.replace(/К/g, "K");
+  var transcription = transcription.replace(/Л/g, "L");
+  var transcription = transcription.replace(/М/g, "M");
+  var transcription = transcription.replace(/Н/g, "N");
+  var transcription = transcription.replace(/Ң/g, "Ng");
+  var transcription = transcription.replace(/О/g, "O");
+  var transcription = transcription.replace(/Ө/g, "Ö");
+  var transcription = transcription.replace(/П/g, "P");
+  var transcription = transcription.replace(/Р/g, "R");
+  var transcription = transcription.replace(/С/g, "S");
+  var transcription = transcription.replace(/Т/g, "T");
+  var transcription = transcription.replace(/У/g, "U");
+  var transcription = transcription.replace(/Ү/g, "Ü");
+  var transcription = transcription.replace(/Ф/g, "F");
+  var transcription = transcription.replace(/Х/g, "Ch");
+  var transcription = transcription.replace(/Ц/g, "Z");
+  var transcription = transcription.replace(/Ч/g, "Tsch");
+  var transcription = transcription.replace(/Ш/g, "Sch");
+  var transcription = transcription.replace(/Щ/g, "Schtsch");
+  var transcription = transcription.replace(/Ы/g, "Y");
+  var transcription = transcription.replace(/Э/g, "E");
+  var transcription = transcription.replace(/Ю/g, "Ju");
+  var transcription = transcription.replace(/Я/g, "Ja");
+  var transcription = transcription.replace(/а/g, "a");
+  var transcription = transcription.replace(/б/g, "b");
+  var transcription = transcription.replace(/в/g, "w");
+  var transcription = transcription.replace(/г/g, "g");
+  var transcription = transcription.replace(/д/g, "d");
+  var transcription = transcription.replace(/е/g, "e"); 
+  var transcription = transcription.replace(/ё/g, "jo");
+  var transcription = transcription.replace(/ж/g, "dsch");
+  var transcription = transcription.replace(/з/g, "s");
+  var transcription = transcription.replace(/и/g, "i");
+  var transcription = transcription.replace(/й/g, "j");
+  var transcription = transcription.replace(/к/g, "k");
+  var transcription = transcription.replace(/л/g, "l");
+  var transcription = transcription.replace(/м/g, "m");
+  var transcription = transcription.replace(/н/g, "n");
+  var transcription = transcription.replace(/ң/g, "ng");
+  var transcription = transcription.replace(/о/g, "o");
+  var transcription = transcription.replace(/ө/g, "ö");
+  var transcription = transcription.replace(/п/g, "p");
+  var transcription = transcription.replace(/р/g, "r");
+  var transcription = transcription.replace(/с/g, "s");
+  var transcription = transcription.replace(/т/g, "t");
+  var transcription = transcription.replace(/у/g, "u");
+  var transcription = transcription.replace(/ү/g, "ü");
+  var transcription = transcription.replace(/ф/g, "f");
+  var transcription = transcription.replace(/х/g, "ch");
+  var transcription = transcription.replace(/ц/g, "z");
+  var transcription = transcription.replace(/ч/g, "tsch");
+  var transcription = transcription.replace(/ш/g, "sch");
+  var transcription = transcription.replace(/щ/g, "schtsch");
+  var transcription = transcription.replace(/ъ/g, "");
+  var transcription = transcription.replace(/ы/g, "y");
+  var transcription = transcription.replace(/ь/g, ""); 
+  var transcription = transcription.replace(/э/g, "e");
+  var transcription = transcription.replace(/ю/g, "ju");
+  var transcription = transcription.replace(/я/g, "ja");
   // Regeln für die wissenschaftliche Transliteration
-  var transliteration = transliteration.replace(//g, "");
+  var transliteration = transliteration.replace(/ /g, " ");
   break;
 
 case "mn":
+  var language = "mn";
   // ab hier wird ganz doof Regel nach Regel abgearbeitet
   // Einzelbuchstaben
-  var target = target.replace(/А/g, "A");
-  var target = target.replace(/Б/g, "B");
-  var target = target.replace(/В/g, "W");
-  var target = target.replace(/Г/g, "G");
-  var target = target.replace(/Д/g, "D");
-  var target = target.replace(/Е/g, "Je");
-  var target = target.replace(/Ё/g, "Jo");
-  var target = target.replace(/Ж/g, "Dsch");
-  var target = target.replace(/З/g, "Ds");
-  var target = target.replace(/И/g, "I");
-  var target = target.replace(/Й/g, "I");
-  var target = target.replace(/К/g, "K");
-  var target = target.replace(/Л/g, "L");
-  var target = target.replace(/М/g, "M");
-  var target = target.replace(/Н/g, "N");
-  var target = target.replace(/О/g, "O");
-  var target = target.replace(/Ө/g, "Ö");
-  var target = target.replace(/П/g, "P");
-  var target = target.replace(/Р/g, "R");
-  var target = target.replace(/С/g, "S");
-  var target = target.replace(/Т/g, "T");
-  var target = target.replace(/У/g, "U");
-  var target = target.replace(/Ү/g, "Ü");
-  var target = target.replace(/Ф/g, "F");
-  var target = target.replace(/Х/g, "Ch");
-  var target = target.replace(/Ц/g, "Ts");
-  var target = target.replace(/Ч/g, "Tsch");
-  var target = target.replace(/Ш/g, "Sch");
-  var target = target.replace(/Щ/g, "Schtsch");
-  var target = target.replace(/Ы/g, "Y");
-  var target = target.replace(/Э/g, "E");
-  var target = target.replace(/Ю/g, "Ju");
-  var target = target.replace(/Я/g, "Ja");
-  var target = target.replace(/а/g, "a");
-  var target = target.replace(/б/g, "b");
-  var target = target.replace(/в/g, "w");
-  var target = target.replace(/г/g, "g");
-  var target = target.replace(/д/g, "d");
-  var target = target.replace(/е/g, "je"); 
-  var target = target.replace(/ё/g, "jo");
-  var target = target.replace(/ж/g, "dsch");
-  var target = target.replace(/з/g, "ds");
-  var target = target.replace(/и/g, "i");
-  var target = target.replace(/й/g, "i");
-  var target = target.replace(/к/g, "k");
-  var target = target.replace(/л/g, "l");
-  var target = target.replace(/м/g, "m");
-  var target = target.replace(/н/g, "n");
-  var target = target.replace(/о/g, "o");
-  var target = target.replace(/ө/g, "ö");
-  var target = target.replace(/п/g, "p");
-  var target = target.replace(/р/g, "r");
-  var target = target.replace(/с/g, "s");
-  var target = target.replace(/т/g, "t");
-  var target = target.replace(/у/g, "u");
-  var target = target.replace(/ү/g, "ü");
-  var target = target.replace(/ф/g, "f");
-  var target = target.replace(/х/g, "ch");
-  var target = target.replace(/ц/g, "ts");
-  var target = target.replace(/ч/g, "tsch");
-  var target = target.replace(/ш/g, "sch");
-  var target = target.replace(/щ/g, "schtsch");
-  var target = target.replace(/ъ/g, "");
-  var target = target.replace(/ы/g, "y");
-  var target = target.replace(/ь/g, "j"); 
-  var target = target.replace(/э/g, "e");
-  var target = target.replace(/ю/g, "ju");
-  var target = target.replace(/я/g, "ja");
+  var transcription = transcription.replace(/А/g, "A");
+  var transcription = transcription.replace(/Б/g, "B");
+  var transcription = transcription.replace(/В/g, "W");
+  var transcription = transcription.replace(/Г/g, "G");
+  var transcription = transcription.replace(/Д/g, "D");
+  var transcription = transcription.replace(/Е/g, "Je");
+  var transcription = transcription.replace(/Ё/g, "Jo");
+  var transcription = transcription.replace(/Ж/g, "Dsch");
+  var transcription = transcription.replace(/З/g, "Ds");
+  var transcription = transcription.replace(/И/g, "I");
+  var transcription = transcription.replace(/Й/g, "I");
+  var transcription = transcription.replace(/К/g, "K");
+  var transcription = transcription.replace(/Л/g, "L");
+  var transcription = transcription.replace(/М/g, "M");
+  var transcription = transcription.replace(/Н/g, "N");
+  var transcription = transcription.replace(/О/g, "O");
+  var transcription = transcription.replace(/Ө/g, "Ö");
+  var transcription = transcription.replace(/П/g, "P");
+  var transcription = transcription.replace(/Р/g, "R");
+  var transcription = transcription.replace(/С/g, "S");
+  var transcription = transcription.replace(/Т/g, "T");
+  var transcription = transcription.replace(/У/g, "U");
+  var transcription = transcription.replace(/Ү/g, "Ü");
+  var transcription = transcription.replace(/Ф/g, "F");
+  var transcription = transcription.replace(/Х/g, "Ch");
+  var transcription = transcription.replace(/Ц/g, "Ts");
+  var transcription = transcription.replace(/Ч/g, "Tsch");
+  var transcription = transcription.replace(/Ш/g, "Sch");
+  var transcription = transcription.replace(/Щ/g, "Schtsch");
+  var transcription = transcription.replace(/Ы/g, "Y");
+  var transcription = transcription.replace(/Э/g, "E");
+  var transcription = transcription.replace(/Ю/g, "Ju");
+  var transcription = transcription.replace(/Я/g, "Ja");
+  var transcription = transcription.replace(/а/g, "a");
+  var transcription = transcription.replace(/б/g, "b");
+  var transcription = transcription.replace(/в/g, "w");
+  var transcription = transcription.replace(/г/g, "g");
+  var transcription = transcription.replace(/д/g, "d");
+  var transcription = transcription.replace(/е/g, "je"); 
+  var transcription = transcription.replace(/ё/g, "jo");
+  var transcription = transcription.replace(/ж/g, "dsch");
+  var transcription = transcription.replace(/з/g, "ds");
+  var transcription = transcription.replace(/и/g, "i");
+  var transcription = transcription.replace(/й/g, "i");
+  var transcription = transcription.replace(/к/g, "k");
+  var transcription = transcription.replace(/л/g, "l");
+  var transcription = transcription.replace(/м/g, "m");
+  var transcription = transcription.replace(/н/g, "n");
+  var transcription = transcription.replace(/о/g, "o");
+  var transcription = transcription.replace(/ө/g, "ö");
+  var transcription = transcription.replace(/п/g, "p");
+  var transcription = transcription.replace(/р/g, "r");
+  var transcription = transcription.replace(/с/g, "s");
+  var transcription = transcription.replace(/т/g, "t");
+  var transcription = transcription.replace(/у/g, "u");
+  var transcription = transcription.replace(/ү/g, "ü");
+  var transcription = transcription.replace(/ф/g, "f");
+  var transcription = transcription.replace(/х/g, "ch");
+  var transcription = transcription.replace(/ц/g, "ts");
+  var transcription = transcription.replace(/ч/g, "tsch");
+  var transcription = transcription.replace(/ш/g, "sch");
+  var transcription = transcription.replace(/щ/g, "schtsch");
+  var transcription = transcription.replace(/ъ/g, "");
+  var transcription = transcription.replace(/ы/g, "y");
+  var transcription = transcription.replace(/ь/g, "j"); 
+  var transcription = transcription.replace(/э/g, "e");
+  var transcription = transcription.replace(/ю/g, "ju");
+  var transcription = transcription.replace(/я/g, "ja");
   // Regeln für die wissenschaftliche Transliteration
-  var transliteration = transliteration.replace(//g, "");
+  var transliteration = transliteration.replace(/ /g, " ");
   break;
 
 case "ru":
+  var language = "ru";
   // ab hier wird ganz doof Regel nach Regel abgearbeitet
   // Sonderfälle 
-  var target = target.replace(/Александр(\s|$)/g, "Alexander$1"); // Александр = Alexander
-  var target = target.replace(/Алекс/g, "Alex"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
-  var target = target.replace(/Аксин/g, "Axin"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
-  var target = target.replace(/Аксан/g, "Axan"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
-  var target = target.replace(/Оксан/g, "Oxan"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
-  var target = target.replace(/Ксен/g, "Xen"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
-  var target = target.replace(/Макс/g, "Max"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
-  var target = target.replace(/Секс/g, "Sex"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
-  var target = target.replace(/Феликс/g, "Felix"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
-  var target = target.replace(/Авксент/g, "Awxent"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
-  var target = target.replace(/([АЕИЙОУЫЯЁЮЭаеийоуыэяёю])е/g, "$1je"); // e nach Vokal = je
-  var target = target.replace(/ий(\s|$)/g, "i$1"); // й nach и am Wortende weg
-  var target = target.replace(/ий/g, "ij"); // й nach и im Wort = j 
-  var target = target.replace(/([аеоу])й/g, "$1i"); // й nach а,е,о,у = i 
-  var target = target.replace(/й([аеоу])/g, "ja"); // й vor а,е,о,у = j
-  var target = target.replace(/([цчшщ])ё/g, "$1o"); // ë nach ц,ч,ш,щ = o
-  var target = target.replace(/([АЕИЙОУЫЯЁЮЭаеийоуыэяёю])с([аеийоуыэьяёю])/g, "$1ss$2"); // с zwischen zwei von аеиоуыяёю = ss
-  var target = target.replace(/ь([аеиоу])/g, "j$1"); // ь vor Vokal = j
+  var transcription = transcription.replace(/Александр(\s|$)/g, "Alexander$1"); // Александр = Alexander
+  var transcription = transcription.replace(/Алекс/g, "Alex"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Аксин/g, "Axin"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Аксан/g, "Axan"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Оксан/g, "Oxan"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Ксен/g, "Xen"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Макс/g, "Max"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Секс/g, "Sex"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Феликс/g, "Felix"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Авксент/g, "Awxent"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/([АЕИЙОУЫЯЁЮЭаеийоуыэяёю])е/g, "$1je"); // e nach Vokal = je
+  var transcription = transcription.replace(/ий(\s|$)/g, "i$1"); // й nach и am Wortende weg
+  var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j 
+  var transcription = transcription.replace(/([аеоу])й/g, "$1i"); // й nach а,е,о,у = i 
+  var transcription = transcription.replace(/й([аеоу])/g, "ja"); // й vor а,е,о,у = j
+  var transcription = transcription.replace(/([цчшщ])ё/g, "$1o"); // ë nach ц,ч,ш,щ = o
+  var transcription = transcription.replace(/([АЕИЙОУЫЯЁЮЭаеийоуыэяёю])с([аеийоуыэьяёю])/g, "$1ss$2"); // с zwischen zwei von аеиоуыяёю = ss
+  var transcription = transcription.replace(/ь([аеиоу])/g, "j$1"); // ь vor Vokal = j
   // Einzelbuchstaben
-  var target = target.replace(/А/g, "A");
-  var target = target.replace(/Б/g, "B");
-  var target = target.replace(/В/g, "W");
-  var target = target.replace(/Г/g, "G");
-  var target = target.replace(/Д/g, "D");
-  var target = target.replace(/Е/g, "Je");
-  var target = target.replace(/Ё/g, "Jo");
-  var target = target.replace(/Ж/g, "Sch");
-  var target = target.replace(/З/g, "S");
-  var target = target.replace(/И/g, "I");
-  var target = target.replace(/Й/g, "J");
-  var target = target.replace(/К/g, "K");
-  var target = target.replace(/Л/g, "L");
-  var target = target.replace(/М/g, "M");
-  var target = target.replace(/Н/g, "N");
-  var target = target.replace(/О/g, "O");
-  var target = target.replace(/П/g, "P");
-  var target = target.replace(/Р/g, "R");
-  var target = target.replace(/С/g, "S");
-  var target = target.replace(/Т/g, "T");
-  var target = target.replace(/У/g, "U");
-  var target = target.replace(/Ф/g, "F");
-  var target = target.replace(/Х/g, "Ch");
-  var target = target.replace(/Ц/g, "Z");
-  var target = target.replace(/Ч/g, "Tsch");
-  var target = target.replace(/Ш/g, "Sch");
-  var target = target.replace(/Щ/g, "Schtsch");
-  var target = target.replace(/Ы/g, "Y");
-  var target = target.replace(/Э/g, "E");
-  var target = target.replace(/Ю/g, "Ju");
-  var target = target.replace(/Я/g, "Ja");
-  var target = target.replace(/а/g, "a");
-  var target = target.replace(/б/g, "b");
-  var target = target.replace(/в/g, "w");
-  var target = target.replace(/г/g, "g");
-  var target = target.replace(/д/g, "d");
-  var target = target.replace(/е/g, "e"); 
-  var target = target.replace(/ё/g, "jo");
-  var target = target.replace(/ж/g, "sch");
-  var target = target.replace(/з/g, "s");
-  var target = target.replace(/и/g, "i");
-  var target = target.replace(/й/g, "j");
-  var target = target.replace(/к/g, "k");
-  var target = target.replace(/л/g, "l");
-  var target = target.replace(/м/g, "m");
-  var target = target.replace(/н/g, "n");
-  var target = target.replace(/о/g, "o");
-  var target = target.replace(/п/g, "p");
-  var target = target.replace(/р/g, "r");
-  var target = target.replace(/с/g, "s");
-  var target = target.replace(/т/g, "t");
-  var target = target.replace(/у/g, "u");
-  var target = target.replace(/ф/g, "f");
-  var target = target.replace(/х/g, "ch");
-  var target = target.replace(/ц/g, "z");
-  var target = target.replace(/ч/g, "tsch");
-  var target = target.replace(/ш/g, "sch");
-  var target = target.replace(/щ/g, "schtsch");
-  var target = target.replace(/ъ/g, "");
-  var target = target.replace(/ы/g, "y");
-  var target = target.replace(/ь/g, ""); 
-  var target = target.replace(/э/g, "e");
-  var target = target.replace(/ю/g, "ju");
-  var target = target.replace(/я/g, "ja");
+  var transcription = transcription.replace(/А/g, "A");
+  var transcription = transcription.replace(/Б/g, "B");
+  var transcription = transcription.replace(/В/g, "W");
+  var transcription = transcription.replace(/Г/g, "G");
+  var transcription = transcription.replace(/Д/g, "D");
+  var transcription = transcription.replace(/Е/g, "Je");
+  var transcription = transcription.replace(/Ё/g, "Jo");
+  var transcription = transcription.replace(/Ж/g, "Sch");
+  var transcription = transcription.replace(/З/g, "S");
+  var transcription = transcription.replace(/И/g, "I");
+  var transcription = transcription.replace(/Й/g, "J");
+  var transcription = transcription.replace(/К/g, "K");
+  var transcription = transcription.replace(/Л/g, "L");
+  var transcription = transcription.replace(/М/g, "M");
+  var transcription = transcription.replace(/Н/g, "N");
+  var transcription = transcription.replace(/О/g, "O");
+  var transcription = transcription.replace(/П/g, "P");
+  var transcription = transcription.replace(/Р/g, "R");
+  var transcription = transcription.replace(/С/g, "S");
+  var transcription = transcription.replace(/Т/g, "T");
+  var transcription = transcription.replace(/У/g, "U");
+  var transcription = transcription.replace(/Ф/g, "F");
+  var transcription = transcription.replace(/Х/g, "Ch");
+  var transcription = transcription.replace(/Ц/g, "Z");
+  var transcription = transcription.replace(/Ч/g, "Tsch");
+  var transcription = transcription.replace(/Ш/g, "Sch");
+  var transcription = transcription.replace(/Щ/g, "Schtsch");
+  var transcription = transcription.replace(/Ы/g, "Y");
+  var transcription = transcription.replace(/Э/g, "E");
+  var transcription = transcription.replace(/Ю/g, "Ju");
+  var transcription = transcription.replace(/Я/g, "Ja");
+  var transcription = transcription.replace(/а/g, "a");
+  var transcription = transcription.replace(/б/g, "b");
+  var transcription = transcription.replace(/в/g, "w");
+  var transcription = transcription.replace(/г/g, "g");
+  var transcription = transcription.replace(/д/g, "d");
+  var transcription = transcription.replace(/е/g, "e"); 
+  var transcription = transcription.replace(/ё/g, "jo");
+  var transcription = transcription.replace(/ж/g, "sch");
+  var transcription = transcription.replace(/з/g, "s");
+  var transcription = transcription.replace(/и/g, "i");
+  var transcription = transcription.replace(/й/g, "j");
+  var transcription = transcription.replace(/к/g, "k");
+  var transcription = transcription.replace(/л/g, "l");
+  var transcription = transcription.replace(/м/g, "m");
+  var transcription = transcription.replace(/н/g, "n");
+  var transcription = transcription.replace(/о/g, "o");
+  var transcription = transcription.replace(/п/g, "p");
+  var transcription = transcription.replace(/р/g, "r");
+  var transcription = transcription.replace(/с/g, "s");
+  var transcription = transcription.replace(/т/g, "t");
+  var transcription = transcription.replace(/у/g, "u");
+  var transcription = transcription.replace(/ф/g, "f");
+  var transcription = transcription.replace(/х/g, "ch");
+  var transcription = transcription.replace(/ц/g, "z");
+  var transcription = transcription.replace(/ч/g, "tsch");
+  var transcription = transcription.replace(/ш/g, "sch");
+  var transcription = transcription.replace(/щ/g, "schtsch");
+  var transcription = transcription.replace(/ъ/g, "");
+  var transcription = transcription.replace(/ы/g, "y");
+  var transcription = transcription.replace(/ь/g, ""); 
+  var transcription = transcription.replace(/э/g, "e");
+  var transcription = transcription.replace(/ю/g, "ju");
+  var transcription = transcription.replace(/я/g, "ja");
   // Regeln für die wissenschaftliche Transliteration
-  var transliteration = transliteration.replace(//g, "");
+  var transliteration = transliteration.replace(/ /g, " ");
   break;
 
 case "tg":
+  var language = "tg";
   // ab hier wird ganz doof Regel nach Regel abgearbeitet
   // Sonderfälle
-  var target = target.replace(/Александр(\s|$)/g, "Alexander$1"); // Александр = Alexander
-  var target = target.replace(/Алекс+/g, "Alex"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Оксан+/g, "Oxan"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Ксен+/g, "Xen"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Макс+/g, "Max"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/Феликс+/g, "Felix"); // кс in Vornamen mit griechischen Wurzeln = x
-  var target = target.replace(/([АЕИЙОУӮЫЯЁЮЭаеийоуӯыэяёю])е/g, "$1je"); // e nach Vokal = je
-  var target = target.replace(/ии/g, "iji"); //  ии = iji
-  var target = target.replace(/ий/g, "ij"); // й nach и im Wort = j 
-  var target = target.replace(/ий$/g, "i"); // й nach и am Wortende weg
-  var target = target.replace(/([аеийӣоуӯыэяёю])й/g, "$1i"); // й nach а,е,о,у = i 
-  var target = target.replace(/й[аеийӣоуӯыэяёю]/g, "ja"); // й vor а,е,о,у = j
-  var target = target.replace(/([цчшщ])ё/g, "$1o"); // ë nach ц,ч,ш,щ = o
-  var target = target.replace(/([АЕИЙӢОУӮЫЯЁЮЭаеийӣоуӯыэяёю])с([аеийӣоуӯыэяёю])/g, "$1ss$2"); // с zwischen zwei von аеийӣоуӯыэяёю = ss
-  var target = target.replace(/ь([аеийӣоуӯыэ])/g, "j$1"); // ь vor Vokal = j
+  var transcription = transcription.replace(/Александр(\s|$)/g, "Alexander$1"); // Александр = Alexander
+  var transcription = transcription.replace(/Алекс+/g, "Alex"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Оксан+/g, "Oxan"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Ксен+/g, "Xen"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Макс+/g, "Max"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/Феликс+/g, "Felix"); // кс in Vornamen mit griechischen Wurzeln = x
+  var transcription = transcription.replace(/([АЕИЙОУӮЫЯЁЮЭаеийоуӯыэяёю])е/g, "$1je"); // e nach Vokal = je
+  var transcription = transcription.replace(/ии/g, "iji"); //  ии = iji
+  var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j 
+  var transcription = transcription.replace(/ий$/g, "i"); // й nach и am Wortende weg
+  var transcription = transcription.replace(/([аеийӣоуӯыэяёю])й/g, "$1i"); // й nach а,е,о,у = i 
+  var transcription = transcription.replace(/й[аеийӣоуӯыэяёю]/g, "ja"); // й vor а,е,о,у = j
+  var transcription = transcription.replace(/([цчшщ])ё/g, "$1o"); // ë nach ц,ч,ш,щ = o
+  var transcription = transcription.replace(/([АЕИЙӢОУӮЫЯЁЮЭаеийӣоуӯыэяёю])с([аеийӣоуӯыэяёю])/g, "$1ss$2"); // с zwischen zwei von аеийӣоуӯыэяёю = ss
+  var transcription = transcription.replace(/ь([аеийӣоуӯыэ])/g, "j$1"); // ь vor Vokal = j
   // Einzelbuchstaben
-  var target = target.replace(/А/g, "A");
-  var target = target.replace(/Б/g, "B");
-  var target = target.replace(/В/g, "W");
-  var target = target.replace(/Г/g, "G");
-  var target = target.replace(/Ғ/g, "Gh");
-  var target = target.replace(/Д/g, "D");
-  var target = target.replace(/Е/g, "Je");
-  var target = target.replace(/Ё/g, "Jo");
-  var target = target.replace(/Ж/g, "Sch");
-  var target = target.replace(/З/g, "S");
-  var target = target.replace(/И/g, "I");
-  var target = target.replace(/Й/g, "J");
-  var target = target.replace(/Ӣ/g, "Ij");
-  var target = target.replace(/К/g, "K");
-  var target = target.replace(/Қ/g, "Q");
-  var target = target.replace(/Л/g, "L");
-  var target = target.replace(/М/g, "M");
-  var target = target.replace(/Н/g, "N");
-  var target = target.replace(/О/g, "O");
-  var target = target.replace(/П/g, "P");
-  var target = target.replace(/Р/g, "R");
-  var target = target.replace(/С/g, "S");
-  var target = target.replace(/Т/g, "T");
-  var target = target.replace(/У/g, "U");
-  var target = target.replace(/Ӯ/g, "U");
-  var target = target.replace(/Ф/g, "F");
-  var target = target.replace(/Х/g, "Ch");
-  var target = target.replace(/Ҳ/g, "H");
-  var target = target.replace(/Ц/g, "Z");
-  var target = target.replace(/Ч/g, "Tsch");
-  var target = target.replace(/Ҷ/g, "Dsch");
-  var target = target.replace(/Ш/g, "Sch");
-  var target = target.replace(/Щ/g, "Schtsch");
-  var target = target.replace(/Ы/g, "Y");
-  var target = target.replace(/Э/g, "E");
-  var target = target.replace(/Ю/g, "Ju");
-  var target = target.replace(/Я/g, "Ja");
-  var target = target.replace(/а/g, "a");
-  var target = target.replace(/б/g, "b");
-  var target = target.replace(/в/g, "w");
-  var target = target.replace(/г/g, "g");
-  var target = target.replace(/ғ/g, "gh");
-  var target = target.replace(/д/g, "d");
-  var target = target.replace(/е/g, "e"); 
-  var target = target.replace(/ё/g, "jo");
-  var target = target.replace(/ж/g, "sch");
-  var target = target.replace(/з/g, "s");
-  var target = target.replace(/и/g, "i");
-  var target = target.replace(/й/g, "j");
-  var target = target.replace(/ӣ/g, "ij");
-  var target = target.replace(/к/g, "k");
-  var target = target.replace(/қ/g, "q");
-  var target = target.replace(/л/g, "l");
-  var target = target.replace(/м/g, "m");
-  var target = target.replace(/н/g, "n");
-  var target = target.replace(/о/g, "o");
-  var target = target.replace(/п/g, "p");
-  var target = target.replace(/р/g, "r");
-  var target = target.replace(/с/g, "s");
-  var target = target.replace(/т/g, "t");
-  var target = target.replace(/у/g, "u");
-  var target = target.replace(/ӯ/g, "u");
-  var target = target.replace(/ф/g, "f");
-  var target = target.replace(/х/g, "ch");
-  var target = target.replace(/ҳ/g, "h");
-  var target = target.replace(/ц/g, "z");
-  var target = target.replace(/ч/g, "tsch");
-  var target = target.replace(/ҷ/g, "dsch");
-  var target = target.replace(/ш/g, "sch");
-  var target = target.replace(/щ/g, "schtsch");
-  var target = target.replace(/ъ/g, "");
-  var target = target.replace(/ы/g, "y");
-  var target = target.replace(/ь/g, ""); 
-  var target = target.replace(/э/g, "e");
-  var target = target.replace(/ю/g, "ju");
-  var target = target.replace(/я/g, "ja");
+  var transcription = transcription.replace(/А/g, "A");
+  var transcription = transcription.replace(/Б/g, "B");
+  var transcription = transcription.replace(/В/g, "W");
+  var transcription = transcription.replace(/Г/g, "G");
+  var transcription = transcription.replace(/Ғ/g, "Gh");
+  var transcription = transcription.replace(/Д/g, "D");
+  var transcription = transcription.replace(/Е/g, "Je");
+  var transcription = transcription.replace(/Ё/g, "Jo");
+  var transcription = transcription.replace(/Ж/g, "Sch");
+  var transcription = transcription.replace(/З/g, "S");
+  var transcription = transcription.replace(/И/g, "I");
+  var transcription = transcription.replace(/Й/g, "J");
+  var transcription = transcription.replace(/Ӣ/g, "Ij");
+  var transcription = transcription.replace(/К/g, "K");
+  var transcription = transcription.replace(/Қ/g, "Q");
+  var transcription = transcription.replace(/Л/g, "L");
+  var transcription = transcription.replace(/М/g, "M");
+  var transcription = transcription.replace(/Н/g, "N");
+  var transcription = transcription.replace(/О/g, "O");
+  var transcription = transcription.replace(/П/g, "P");
+  var transcription = transcription.replace(/Р/g, "R");
+  var transcription = transcription.replace(/С/g, "S");
+  var transcription = transcription.replace(/Т/g, "T");
+  var transcription = transcription.replace(/У/g, "U");
+  var transcription = transcription.replace(/Ӯ/g, "U");
+  var transcription = transcription.replace(/Ф/g, "F");
+  var transcription = transcription.replace(/Х/g, "Ch");
+  var transcription = transcription.replace(/Ҳ/g, "H");
+  var transcription = transcription.replace(/Ц/g, "Z");
+  var transcription = transcription.replace(/Ч/g, "Tsch");
+  var transcription = transcription.replace(/Ҷ/g, "Dsch");
+  var transcription = transcription.replace(/Ш/g, "Sch");
+  var transcription = transcription.replace(/Щ/g, "Schtsch");
+  var transcription = transcription.replace(/Ы/g, "Y");
+  var transcription = transcription.replace(/Э/g, "E");
+  var transcription = transcription.replace(/Ю/g, "Ju");
+  var transcription = transcription.replace(/Я/g, "Ja");
+  var transcription = transcription.replace(/а/g, "a");
+  var transcription = transcription.replace(/б/g, "b");
+  var transcription = transcription.replace(/в/g, "w");
+  var transcription = transcription.replace(/г/g, "g");
+  var transcription = transcription.replace(/ғ/g, "gh");
+  var transcription = transcription.replace(/д/g, "d");
+  var transcription = transcription.replace(/е/g, "e"); 
+  var transcription = transcription.replace(/ё/g, "jo");
+  var transcription = transcription.replace(/ж/g, "sch");
+  var transcription = transcription.replace(/з/g, "s");
+  var transcription = transcription.replace(/и/g, "i");
+  var transcription = transcription.replace(/й/g, "j");
+  var transcription = transcription.replace(/ӣ/g, "ij");
+  var transcription = transcription.replace(/к/g, "k");
+  var transcription = transcription.replace(/қ/g, "q");
+  var transcription = transcription.replace(/л/g, "l");
+  var transcription = transcription.replace(/м/g, "m");
+  var transcription = transcription.replace(/н/g, "n");
+  var transcription = transcription.replace(/о/g, "o");
+  var transcription = transcription.replace(/п/g, "p");
+  var transcription = transcription.replace(/р/g, "r");
+  var transcription = transcription.replace(/с/g, "s");
+  var transcription = transcription.replace(/т/g, "t");
+  var transcription = transcription.replace(/у/g, "u");
+  var transcription = transcription.replace(/ӯ/g, "u");
+  var transcription = transcription.replace(/ф/g, "f");
+  var transcription = transcription.replace(/х/g, "ch");
+  var transcription = transcription.replace(/ҳ/g, "h");
+  var transcription = transcription.replace(/ц/g, "z");
+  var transcription = transcription.replace(/ч/g, "tsch");
+  var transcription = transcription.replace(/ҷ/g, "dsch");
+  var transcription = transcription.replace(/ш/g, "sch");
+  var transcription = transcription.replace(/щ/g, "schtsch");
+  var transcription = transcription.replace(/ъ/g, "");
+  var transcription = transcription.replace(/ы/g, "y");
+  var transcription = transcription.replace(/ь/g, ""); 
+  var transcription = transcription.replace(/э/g, "e");
+  var transcription = transcription.replace(/ю/g, "ju");
+  var transcription = transcription.replace(/я/g, "ja");
   // Regeln für die wissenschaftliche Transliteration
-  var transliteration = transliteration.replace(//g, "");
+  var transliteration = transliteration.replace(/ /g, " ");
   break;
   
 case "uk":
+  var language = "uk";
   // ab hier wird ganz doof Regel nach Regel abgearbeitet
   // Sonderfälle 
-  var target = target.replace(/([АЕІЇИЙОУЯЮЄаеіїийоуяює])с([аеіїийоуьяює])/g, "$1ss$2"); // с zwischen zwei von аеіїийоуьяює = ss
-  var target = target.replace(/ь([аеіиоу])/g, "j$1"); // ь vor аеіиоу = j
+  var transcription = transcription.replace(/([АЕІЇИЙОУЯЮЄаеіїийоуяює])с([аеіїийоуьяює])/g, "$1ss$2"); // с zwischen zwei von аеіїийоуьяює = ss
+  var transcription = transcription.replace(/ь([аеіиоу])/g, "j$1"); // ь vor аеіиоу = j
   // Einzelbuchstaben
-  var target = target.replace(/А/g, "A");
-  var target = target.replace(/Б/g, "B");
-  var target = target.replace(/В/g, "W");
-  var target = target.replace(/Г/g, "H");
-  var target = target.replace(/Ґ/g, "G");
-  var target = target.replace(/Д/g, "D");
-  var target = target.replace(/Е/g, "E");
-  var target = target.replace(/Ж/g, "Sch");
-  var target = target.replace(/З/g, "S");
-  var target = target.replace(/І/g, "I");
-  var target = target.replace(/Ї/g, "Ji");
-  var target = target.replace(/И/g, "Y");
-  var target = target.replace(/Й/g, "J");
-  var target = target.replace(/К/g, "K");
-  var target = target.replace(/Л/g, "L");
-  var target = target.replace(/М/g, "M");
-  var target = target.replace(/Н/g, "N");
-  var target = target.replace(/О/g, "O");
-  var target = target.replace(/П/g, "P");
-  var target = target.replace(/Р/g, "R");
-  var target = target.replace(/С/g, "S");
-  var target = target.replace(/Т/g, "T");
-  var target = target.replace(/У/g, "U");
-  var target = target.replace(/Ф/g, "F");
-  var target = target.replace(/Х/g, "Ch");
-  var target = target.replace(/Ц/g, "Z");
-  var target = target.replace(/Ч/g, "Tsch");
-  var target = target.replace(/Ш/g, "Sch");
-  var target = target.replace(/Щ/g, "Schtsch");
-  var target = target.replace(/Є/g, "Je");
-  var target = target.replace(/Ю/g, "Ju");
-  var target = target.replace(/Я/g, "Ja");
-  var target = target.replace(/а/g, "a");
-  var target = target.replace(/б/g, "b");
-  var target = target.replace(/в/g, "w");
-  var target = target.replace(/г/g, "h");
-  var target = target.replace(/ґ/g, "g");
-  var target = target.replace(/д/g, "d");
-  var target = target.replace(/е/g, "e"); 
-  var target = target.replace(/ж/g, "sch");
-  var target = target.replace(/з/g, "s");
-  var target = target.replace(/і/g, "i");
-  var target = target.replace(/ї/g, "ji");
-  var target = target.replace(/и/g, "y");
-  var target = target.replace(/й/g, "j");
-  var target = target.replace(/к/g, "k");
-  var target = target.replace(/л/g, "l");
-  var target = target.replace(/м/g, "m");
-  var target = target.replace(/н/g, "n");
-  var target = target.replace(/о/g, "o");
-  var target = target.replace(/п/g, "p");
-  var target = target.replace(/р/g, "r");
-  var target = target.replace(/с/g, "s");
-  var target = target.replace(/т/g, "t");
-  var target = target.replace(/у/g, "u");
-  var target = target.replace(/ф/g, "f");
-  var target = target.replace(/х/g, "ch");
-  var target = target.replace(/ц/g, "z");
-  var target = target.replace(/ч/g, "tsch");
-  var target = target.replace(/ш/g, "sch");
-  var target = target.replace(/щ/g, "schtsch");
-  var target = target.replace(/ь/g, "");
-  var target = target.replace(/є/g, "je");
-  var target = target.replace(/ю/g, "ju");
-  var target = target.replace(/я/g, "ja");
-  var target = target.replace(/'|’/g, "");
+  var transcription = transcription.replace(/А/g, "A");
+  var transcription = transcription.replace(/Б/g, "B");
+  var transcription = transcription.replace(/В/g, "W");
+  var transcription = transcription.replace(/Г/g, "H");
+  var transcription = transcription.replace(/Ґ/g, "G");
+  var transcription = transcription.replace(/Д/g, "D");
+  var transcription = transcription.replace(/Е/g, "E");
+  var transcription = transcription.replace(/Ж/g, "Sch");
+  var transcription = transcription.replace(/З/g, "S");
+  var transcription = transcription.replace(/І/g, "I");
+  var transcription = transcription.replace(/Ї/g, "Ji");
+  var transcription = transcription.replace(/И/g, "Y");
+  var transcription = transcription.replace(/Й/g, "J");
+  var transcription = transcription.replace(/К/g, "K");
+  var transcription = transcription.replace(/Л/g, "L");
+  var transcription = transcription.replace(/М/g, "M");
+  var transcription = transcription.replace(/Н/g, "N");
+  var transcription = transcription.replace(/О/g, "O");
+  var transcription = transcription.replace(/П/g, "P");
+  var transcription = transcription.replace(/Р/g, "R");
+  var transcription = transcription.replace(/С/g, "S");
+  var transcription = transcription.replace(/Т/g, "T");
+  var transcription = transcription.replace(/У/g, "U");
+  var transcription = transcription.replace(/Ф/g, "F");
+  var transcription = transcription.replace(/Х/g, "Ch");
+  var transcription = transcription.replace(/Ц/g, "Z");
+  var transcription = transcription.replace(/Ч/g, "Tsch");
+  var transcription = transcription.replace(/Ш/g, "Sch");
+  var transcription = transcription.replace(/Щ/g, "Schtsch");
+  var transcription = transcription.replace(/Є/g, "Je");
+  var transcription = transcription.replace(/Ю/g, "Ju");
+  var transcription = transcription.replace(/Я/g, "Ja");
+  var transcription = transcription.replace(/а/g, "a");
+  var transcription = transcription.replace(/б/g, "b");
+  var transcription = transcription.replace(/в/g, "w");
+  var transcription = transcription.replace(/г/g, "h");
+  var transcription = transcription.replace(/ґ/g, "g");
+  var transcription = transcription.replace(/д/g, "d");
+  var transcription = transcription.replace(/е/g, "e"); 
+  var transcription = transcription.replace(/ж/g, "sch");
+  var transcription = transcription.replace(/з/g, "s");
+  var transcription = transcription.replace(/і/g, "i");
+  var transcription = transcription.replace(/ї/g, "ji");
+  var transcription = transcription.replace(/и/g, "y");
+  var transcription = transcription.replace(/й/g, "j");
+  var transcription = transcription.replace(/к/g, "k");
+  var transcription = transcription.replace(/л/g, "l");
+  var transcription = transcription.replace(/м/g, "m");
+  var transcription = transcription.replace(/н/g, "n");
+  var transcription = transcription.replace(/о/g, "o");
+  var transcription = transcription.replace(/п/g, "p");
+  var transcription = transcription.replace(/р/g, "r");
+  var transcription = transcription.replace(/с/g, "s");
+  var transcription = transcription.replace(/т/g, "t");
+  var transcription = transcription.replace(/у/g, "u");
+  var transcription = transcription.replace(/ф/g, "f");
+  var transcription = transcription.replace(/х/g, "ch");
+  var transcription = transcription.replace(/ц/g, "z");
+  var transcription = transcription.replace(/ч/g, "tsch");
+  var transcription = transcription.replace(/ш/g, "sch");
+  var transcription = transcription.replace(/щ/g, "schtsch");
+  var transcription = transcription.replace(/ь/g, "");
+  var transcription = transcription.replace(/є/g, "je");
+  var transcription = transcription.replace(/ю/g, "ju");
+  var transcription = transcription.replace(/я/g, "ja");
+  var transcription = transcription.replace(/'|’/g, "");
   // Regeln für die wissenschaftliche Transliteration
-  var transliteration = transliteration.replace(//g, "");
+  var transliteration = transliteration.replace(/ /g, " ");
   break;
 
 case "be":
-    // ab hier wird ganz doof Regel nach Regel abgearbeitet
+  var language = "be";
+  // ab hier wird ganz doof Regel nach Regel abgearbeitet
   // Sonderfälle 
-  var target = target.replace(/([АЕІЙОУЎЫЭЯЁЮаеійоуўыэяёю])с([аеійоуўыэьяёю])/g, "$1ss$2"); // с zwischen zwei von аеійоуўыэьяёю = ss
-  var target = target.replace(/([аеійоуўыэяёю'])е/g, "$1je"); // e nach Vokal = je
-  var target = target.replace(/ь([аеійоуўыэ])/g, "j$1"); // ь vor аеійоуўыэ = j
+  var transcription = transcription.replace(/([АЕІЙОУЎЫЭЯЁЮаеійоуўыэяёю])с([аеійоуўыэьяёю])/g, "$1ss$2"); // с zwischen zwei von аеійоуўыэьяёю = ss
+  var transcription = transcription.replace(/([аеійоуўыэяёю'])е/g, "$1je"); // e nach Vokal = je
+  var transcription = transcription.replace(/ь([аеійоуўыэ])/g, "j$1"); // ь vor аеійоуўыэ = j
   // Einzelbuchstaben
-  var target = target.replace(/А/g, "A");
-  var target = target.replace(/Б/g, "B");
-  var target = target.replace(/В/g, "W");
-  var target = target.replace(/Г/g, "H");
-  var target = target.replace(/Ґ/g, "G");
-  var target = target.replace(/Д/g, "D");
-  var target = target.replace(/Е/g, "Je");
-  var target = target.replace(/Ж/g, "Sch");
-  var target = target.replace(/З/g, "S");
-  var target = target.replace(/І/g, "I");
-  var target = target.replace(/Й/g, "J");
-  var target = target.replace(/К/g, "K");
-  var target = target.replace(/Л/g, "L");
-  var target = target.replace(/М/g, "M");
-  var target = target.replace(/Н/g, "N");
-  var target = target.replace(/О/g, "O");
-  var target = target.replace(/П/g, "P");
-  var target = target.replace(/Р/g, "R");
-  var target = target.replace(/С/g, "S");
-  var target = target.replace(/Т/g, "T");
-  var target = target.replace(/У/g, "U");
-  var target = target.replace(/Ў/g, "U");
-  var target = target.replace(/Ф/g, "F");
-  var target = target.replace(/Х/g, "Ch");
-  var target = target.replace(/Ц/g, "Z");
-  var target = target.replace(/Ч/g, "Tsch");
-  var target = target.replace(/Ш/g, "Sch");
-  var target = target.replace(/Ы/g, "Y");
-  var target = target.replace(/Э/g, "E");
-  var target = target.replace(/Ю/g, "Ju");
-  var target = target.replace(/Ё/g, "Jo");
-  var target = target.replace(/Я/g, "Ja");
-  var target = target.replace(/а/g, "a");
-  var target = target.replace(/б/g, "b");
-  var target = target.replace(/в/g, "w");
-  var target = target.replace(/г/g, "h");
-  var target = target.replace(/ґ/g, "g");
-  var target = target.replace(/д/g, "d");
-  var target = target.replace(/е/g, "e"); 
-  var target = target.replace(/ж/g, "sch");
-  var target = target.replace(/з/g, "s");
-  var target = target.replace(/і/g, "i");
-  var target = target.replace(/й/g, "j");
-  var target = target.replace(/к/g, "k");
-  var target = target.replace(/л/g, "l");
-  var target = target.replace(/м/g, "m");
-  var target = target.replace(/н/g, "n");
-  var target = target.replace(/о/g, "o");
-  var target = target.replace(/п/g, "p");
-  var target = target.replace(/р/g, "r");
-  var target = target.replace(/с/g, "s");
-  var target = target.replace(/т/g, "t");
-  var target = target.replace(/у/g, "u");
-  var target = target.replace(/ў/g, "u");
-  var target = target.replace(/ф/g, "f");
-  var target = target.replace(/х/g, "ch");
-  var target = target.replace(/ц/g, "z");
-  var target = target.replace(/ч/g, "tsch");
-  var target = target.replace(/ш/g, "sch");
-  var target = target.replace(/ь/g, "");
-  var target = target.replace(/ы/g, "y");
-  var target = target.replace(/э/g, "e");
-  var target = target.replace(/ю/g, "ju");
-  var target = target.replace(/ё/g, "jo");
-  var target = target.replace(/я/g, "ja");
+  var transcription = transcription.replace(/А/g, "A");
+  var transcription = transcription.replace(/Б/g, "B");
+  var transcription = transcription.replace(/В/g, "W");
+  var transcription = transcription.replace(/Г/g, "H");
+  var transcription = transcription.replace(/Ґ/g, "G");
+  var transcription = transcription.replace(/Д/g, "D");
+  var transcription = transcription.replace(/Е/g, "Je");
+  var transcription = transcription.replace(/Ж/g, "Sch");
+  var transcription = transcription.replace(/З/g, "S");
+  var transcription = transcription.replace(/І/g, "I");
+  var transcription = transcription.replace(/Й/g, "J");
+  var transcription = transcription.replace(/К/g, "K");
+  var transcription = transcription.replace(/Л/g, "L");
+  var transcription = transcription.replace(/М/g, "M");
+  var transcription = transcription.replace(/Н/g, "N");
+  var transcription = transcription.replace(/О/g, "O");
+  var transcription = transcription.replace(/П/g, "P");
+  var transcription = transcription.replace(/Р/g, "R");
+  var transcription = transcription.replace(/С/g, "S");
+  var transcription = transcription.replace(/Т/g, "T");
+  var transcription = transcription.replace(/У/g, "U");
+  var transcription = transcription.replace(/Ў/g, "U");
+  var transcription = transcription.replace(/Ф/g, "F");
+  var transcription = transcription.replace(/Х/g, "Ch");
+  var transcription = transcription.replace(/Ц/g, "Z");
+  var transcription = transcription.replace(/Ч/g, "Tsch");
+  var transcription = transcription.replace(/Ш/g, "Sch");
+  var transcription = transcription.replace(/Ы/g, "Y");
+  var transcription = transcription.replace(/Э/g, "E");
+  var transcription = transcription.replace(/Ю/g, "Ju");
+  var transcription = transcription.replace(/Ё/g, "Jo");
+  var transcription = transcription.replace(/Я/g, "Ja");
+  var transcription = transcription.replace(/а/g, "a");
+  var transcription = transcription.replace(/б/g, "b");
+  var transcription = transcription.replace(/в/g, "w");
+  var transcription = transcription.replace(/г/g, "h");
+  var transcription = transcription.replace(/ґ/g, "g");
+  var transcription = transcription.replace(/д/g, "d");
+  var transcription = transcription.replace(/е/g, "e"); 
+  var transcription = transcription.replace(/ж/g, "sch");
+  var transcription = transcription.replace(/з/g, "s");
+  var transcription = transcription.replace(/і/g, "i");
+  var transcription = transcription.replace(/й/g, "j");
+  var transcription = transcription.replace(/к/g, "k");
+  var transcription = transcription.replace(/л/g, "l");
+  var transcription = transcription.replace(/м/g, "m");
+  var transcription = transcription.replace(/н/g, "n");
+  var transcription = transcription.replace(/о/g, "o");
+  var transcription = transcription.replace(/п/g, "p");
+  var transcription = transcription.replace(/р/g, "r");
+  var transcription = transcription.replace(/с/g, "s");
+  var transcription = transcription.replace(/т/g, "t");
+  var transcription = transcription.replace(/у/g, "u");
+  var transcription = transcription.replace(/ў/g, "u");
+  var transcription = transcription.replace(/ф/g, "f");
+  var transcription = transcription.replace(/х/g, "ch");
+  var transcription = transcription.replace(/ц/g, "z");
+  var transcription = transcription.replace(/ч/g, "tsch");
+  var transcription = transcription.replace(/ш/g, "sch");
+  var transcription = transcription.replace(/ь/g, "");
+  var transcription = transcription.replace(/ы/g, "y");
+  var transcription = transcription.replace(/э/g, "e");
+  var transcription = transcription.replace(/ю/g, "ju");
+  var transcription = transcription.replace(/ё/g, "jo");
+  var transcription = transcription.replace(/я/g, "ja");
   // Apostroph
-  var target = target.replace(/'/g, "");
+  var transcription = transcription.replace(/'/g, "");
   // Regeln für die wissenschaftliche Transliteration
-  var transliteration = transliteration.replace(//g, "");
+  var transliteration = transliteration.replace(/ /g, " ");
   break;
 
 default:
   break;
   }
 
-  document.getElementById("target").value = target;
+  document.getElementById("transcription").value = transcription;
   document.getElementById("transliteration").value = transliteration;
+  document.getElementById("copytemplate").value = "'''" + transcription + "''', {{" + language + "S|" + source + "}}, wiss. [[Transliteration]] ''{{lang|" + language + "-Latn|" + transliteration + "}}''";
 
 }
 
@@ -795,13 +805,19 @@ default:
 			<div class="input-group-prepend">
 				<span class="input-group-text">Transkription</span>
 			</div>
-			<textarea class="form-control" aria-label="Transkription" id="target" rows="3"></textarea>
+			<textarea class="form-control" aria-label="Transkription" id="transcription" rows="3"></textarea>
 		</div>
 		<div class="input-group">
 			<div class="input-group-prepend">
-				<span class="input-group-text">wissenschaftliche<br />Transliteration</span>
+				<span class="input-group-text">wissenschaftliche Transliteration</span>
 			</div>
 			<textarea class="form-control" aria-label="Transliteration" id="transliteration" rows="3"></textarea>
+		</div>
+		<div class="input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text">Wikipedia-Kopiervorlage</span>
+			</div>
+			<textarea class="form-control" aria-label="Wikipedia-Kopiervorlage" id="copytemplate" rows="3"></textarea>
 		</div>
 	</div>
 	</form>
