@@ -43,10 +43,12 @@ function radioValue(rObj) {
 function transcribe (){
 var language = radioValue(document.theForm.languageRadio);
 var target = document.getElementById("source").value;
+var transliteration = document.getElementById("source").value;
 switch (language) {
 
 case "bg":
   // ab hier wird ganz doof Regel nach Regel abgearbeitet
+  // Regeln für Transkription
   // Sonderfälle
   var target = target.replace(/Алекс/g, "Alex"); // кс in Vornamen mit griechischen Wurzeln = x
   var target = target.replace(/Оксан/g, "Oxan"); // кс in Vornamen mit griechischen Wurzeln = x
@@ -115,6 +117,8 @@ case "bg":
   var target = target.replace(/ь/g, ""); 
   var target = target.replace(/ю/g, "ju");
   var target = target.replace(/я/g, "ja");
+  // Regeln für die wissenschaftliche Transliteration
+  var transliteration = transliteration.replace(//g, "");
   break;
 
 case "kk":
@@ -217,6 +221,8 @@ case "kk":
   var target = target.replace(/э/g, "e");
   var target = target.replace(/ю/g, "ju");
   var target = target.replace(/я/g, "ja");
+  // Regeln für die wissenschaftliche Transliteration
+  var transliteration = transliteration.replace(//g, "");
   break;
 
 case "ky":
@@ -307,6 +313,8 @@ case "ky":
   var target = target.replace(/э/g, "e");
   var target = target.replace(/ю/g, "ju");
   var target = target.replace(/я/g, "ja");
+  // Regeln für die wissenschaftliche Transliteration
+  var transliteration = transliteration.replace(//g, "");
   break;
 
 case "mn":
@@ -380,6 +388,8 @@ case "mn":
   var target = target.replace(/э/g, "e");
   var target = target.replace(/ю/g, "ju");
   var target = target.replace(/я/g, "ja");
+  // Regeln für die wissenschaftliche Transliteration
+  var transliteration = transliteration.replace(//g, "");
   break;
 
 case "ru":
@@ -468,6 +478,8 @@ case "ru":
   var target = target.replace(/э/g, "e");
   var target = target.replace(/ю/g, "ju");
   var target = target.replace(/я/g, "ja");
+  // Regeln für die wissenschaftliche Transliteration
+  var transliteration = transliteration.replace(//g, "");
   break;
 
 case "tg":
@@ -565,6 +577,8 @@ case "tg":
   var target = target.replace(/э/g, "e");
   var target = target.replace(/ю/g, "ju");
   var target = target.replace(/я/g, "ja");
+  // Regeln für die wissenschaftliche Transliteration
+  var transliteration = transliteration.replace(//g, "");
   break;
   
 case "uk":
@@ -639,6 +653,8 @@ case "uk":
   var target = target.replace(/ю/g, "ju");
   var target = target.replace(/я/g, "ja");
   var target = target.replace(/'|’/g, "");
+  // Regeln für die wissenschaftliche Transliteration
+  var transliteration = transliteration.replace(//g, "");
   break;
 
 case "be":
@@ -715,6 +731,8 @@ case "be":
   var target = target.replace(/я/g, "ja");
   // Apostroph
   var target = target.replace(/'/g, "");
+  // Regeln für die wissenschaftliche Transliteration
+  var transliteration = transliteration.replace(//g, "");
   break;
 
 default:
@@ -722,6 +740,7 @@ default:
   }
 
   document.getElementById("target").value = target;
+  document.getElementById("transliteration").value = transliteration;
 
 }
 
@@ -777,6 +796,12 @@ default:
 				<span class="input-group-text">Transkription</span>
 			</div>
 			<textarea class="form-control" aria-label="Transkription" id="target" rows="3"></textarea>
+		</div>
+		<div class="input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text">wissenschaftliche<br />Transliteration</span>
+			</div>
+			<textarea class="form-control" aria-label="Transliteration" id="transliteration" rows="3"></textarea>
 		</div>
 	</div>
 	</form>
