@@ -2,28 +2,10 @@
 <html lang="de">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
 <script>
 'use strict';
 (function () {
@@ -759,71 +741,55 @@ default:
 </head>
 <body>
 <div class="container">
-	<div class="row justify-content-start">
-		<h1>Wikyrill-o-mat</h1>
-		<p>Transkription bulgarischer, kasachischer, kirgisischer, mongolischer, russischer, tadschikischer, ukrainischer und weißrussischer Namen in kyrillischer Schrift in die deutsche Sprache.</p>
-		<p>Wählen Sie die Sprache aus, deren Transkriptionsregeln verwendet werden sollen, fügen Sie den kyrillischen Text in das Feld <em>Original</em> und klicken Sie auf den Button <em>Л &rarr; L</em>.</p>
-		<form name="theForm">
+	<h1>Wikyrill-o-mat</h1>
+	<p>Transkription bulgarischer, kasachischer, kirgisischer, mongolischer, russischer, tadschikischer, ukrainischer und weißrussischer Namen in kyrillischer Schrift in die deutsche Sprache.</p>
+	<p>Wählen Sie die Sprache aus, deren Transkriptionsregeln verwendet werden sollen, fügen Sie den kyrillischen Text in das Feld <em>Original</em> und klicken Sie auf den Button <em>Л &rarr; L</em>.</p>
+	<form name="theForm">
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="languageRadio" id="bg" value="bg">
+			<label class="form-check-label" for="bg">Bulgarisch</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="languageRadio" id="kk" value="kk">
+			<label class="form-check-label" for="kk">Kasachisch</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="languageRadio" id="ky" value="ky">
+			<label class="form-check-label" for="ky">Kirgisisch</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="languageRadio" id="mn" value="mn">
+			<label class="form-check-label" for="mn">Mongolisch</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="languageRadio" id="ru" value="ru" checked="checked">
+			<label class="form-check-label" for="ru">Russisch</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="languageRadio" id="tg" value="tg">
+			<label class="form-check-label" for="tg">Tadschikisch</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="languageRadio" id="uk" value="uk">
+			<label class="form-check-label" for="uk">Ukrainisch</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="languageRadio" id="be" value="be">
+			<label class="form-check-label" for="be">Weißrussisch</label>
+		</div>
 		<div class="form-group">
-			<div class="btn-group btn-group-toggle" data-toggle="buttons">
-				<label class="btn btn-secondary">
-					<input type="radio" name="languageRadio" id="bg" value="bg" autocomplete="off"> Bulgarisch
-				</label>
-				<label class="btn btn-secondary">
-					<input type="radio" name="languageRadio" id="kk" value="kk" autocomplete="off"> Kasachisch
-				</label>
-				<label class="btn btn-secondary">
-					<input type="radio" name="languageRadio" id="ky" value="ky" autocomplete="off"> Kirgisisch
-				</label>
-				<label class="btn btn-secondary">
-					<input type="radio" name="languageRadio" id="mn" value="mn" autocomplete="off"> Mongolisch
-				</label>
-				<label class="btn btn-secondary active">
-					<input type="radio" name="languageRadio" id="ru" value="ru" autocomplete="off" checked> Russisch
-				</label>
-				<label class="btn btn-secondary">
-					<input type="radio" name="languageRadio" id="tg" value="tg" autocomplete="off"> Tadschikisch
-				</label>
-				<label class="btn btn-secondary">
-					<input type="radio" name="languageRadio" id="uk" value="uk" autocomplete="off"> Ukrainisch
-				</label>
-				<label class="btn btn-secondary">
-					<input type="radio" name="languageRadio" id="be" value="be" autocomplete="off"> Weißrussisch
-				</label>
-			</div>
+		<label for="source">Original</label>
+		<textarea class="form-control" id="source"></textarea>
+		<button type="button" class="btn btn-primary btn-block" id="button">Л &rarr; L</button>
+		<label for="transcription">Transkription</label>
+		<textarea class="form-control" id="transcription"></textarea>
+		<label for="transliteration">wissenschaftliche Transliteration</label>
+		<textarea class="form-control" id="transliteration"></textarea>
+		<label for="copytemplate">Wikipedia-Kopiervorlage</label>
+		<textarea class="form-control" id="copytemplate"></textarea>
 		</div>
-	</div>
-	<div class="row justify-content-justified">
-		<div class="input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text">Original</span>
-			</div>
-			<textarea class="form-control" aria-label="Original" id="source" rows="3"></textarea>
-		</div>
-		<button type="button" class="btn btn-primary btn-lg btn-block" id="button">Л &rarr; L</button>
-		<div class="input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text">Transkription</span>
-			</div>
-			<textarea class="form-control" aria-label="Transkription" id="transcription" rows="3"></textarea>
-		</div>
-		<div class="input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text">wissenschaftliche Transliteration</span>
-			</div>
-			<textarea class="form-control" aria-label="Transliteration" id="transliteration" rows="3"></textarea>
-		</div>
-		<div class="input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text">Wikipedia-Kopiervorlage</span>
-			</div>
-			<textarea class="form-control" aria-label="Wikipedia-Kopiervorlage" id="copytemplate" rows="3"></textarea>
-		</div>
-	</div>
 	</form>
-	<div class="row justify-content-start">
-		<p>Dieses Tool verwendet die <a href="https://de.wikipedia.org/wiki/Wikipedia:Namenskonventionen/Kyrillisch">Transkriptionsregeln für die deutschsprachige Wikipedia</a>. Fragen und Anmerkungen hinterlassen Sie bitte auf der <a href="https://de.wikipedia.org/wiki/Wikipedia_Diskussion:Namenskonventionen/Kyrillisch">Diskussionsseite in der Wikipedia</a>.</p>
-	</div>
+	<p>Dieses Tool verwendet die <a href="https://de.wikipedia.org/wiki/Wikipedia:Namenskonventionen/Kyrillisch">Transkriptionsregeln für die deutschsprachige Wikipedia</a>. Fragen und Anmerkungen hinterlassen Sie bitte auf der <a href="https://de.wikipedia.org/wiki/Wikipedia_Diskussion:Namenskonventionen/Kyrillisch">Diskussionsseite in der Wikipedia</a>.</p>
 </div>
 </body>
 </html>
