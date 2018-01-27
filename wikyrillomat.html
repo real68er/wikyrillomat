@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script>
 'use strict';
 (function () {
@@ -14,11 +14,6 @@
 	document.addEventListener('DOMContentLoaded', init);
 }());
 
-function radioValue(rObj) {
-	for (var i=0; i<rObj.length; i++) if (rObj[i].checked) return rObj[i].value;
-	return false;
-}
-
 function transcribe (){
 	// Auslesen des Originaltextes
 	var source = document.getElementById("source").value;
@@ -27,7 +22,7 @@ function transcribe (){
 	// Initialisierung der Transliteration
 	var transliteration = source;
 	// Auslesen der Sprache
-	var language = radioValue(document.theForm.languageRadio);
+	var language = document.theForm.languageSelect.value;
 	// Ausführung je nach Sprache
 	switch (language) {
 
@@ -751,8 +746,8 @@ function transcribe (){
 	document.getElementById("copytemplate").value = "";
 	// Befüllen des Feldes für die Wikipedia-Kopiervorlage
 	for(var i = 0;i < arrayOfSource.length;i++){ 
-		document.getElementById("copytemplate").value = document.getElementById("copytemplate").value + "'''" + arrayOfTranscription[i] + "''', {{" + template + "|" + arrayOfSource[i] + "}}";
-//		document.getElementById("copytemplate").value = document.getElementById("copytemplate").value + ", wiss. [[Transliteration]] ''{{lang|" + language + "-Latn|" + arrayOfTransliteration[i] + "}}''";		
+		document.getElementById("copytemplate").value = document.getElementById("copytemplate").value + "'''" + arrayOfTranscription[i].trim() + "''', {{" + template + "|" + arrayOfSource[i].trim() + "}}";
+//		document.getElementById("copytemplate").value = document.getElementById("copytemplate").value + ", wiss. [[Transliteration]] ''{{lang|" + language + "-Latn|" + arrayOfTransliteration[i].trim() + "}}''";		
 		if (arrayOfSource.length > 1 && i < arrayOfSource.length - 1) {document.getElementById("copytemplate").value = document.getElementById("copytemplate").value + "\n";}
 	}
 }
@@ -767,41 +762,19 @@ function transcribe (){
 	<p>Wählen Sie die Sprache aus, deren Regeln verwendet werden sollen, fügen Sie den kyrillischen Text in das Feld <em>Original</em> und klicken Sie auf den Button <em>Л &rarr; L</em>.</p>
 	<form name="theForm">
 		<label class="lead">Sprache des Originals</label>
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="languageRadio" id="bg" value="bg">
-			<label class="form-check-label" for="bg">Bulgarisch</label>
-		</div>
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="languageRadio" id="kk" value="kk">
-			<label class="form-check-label" for="kk">Kasachisch</label>
-		</div>
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="languageRadio" id="ky" value="ky">
-			<label class="form-check-label" for="ky">Kirgisisch</label>
-		</div>
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="languageRadio" id="mn" value="mn">
-			<label class="form-check-label" for="mn">Mongolisch</label>
-		</div>
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="languageRadio" id="ru" value="ru" checked="checked">
-			<label class="form-check-label" for="ru">Russisch</label>
-		</div>
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="languageRadio" id="tg" value="tg">
-			<label class="form-check-label" for="tg">Tadschikisch</label>
-		</div>
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="languageRadio" id="uk" value="uk">
-			<label class="form-check-label" for="uk">Ukrainisch</label>
-		</div>
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="languageRadio" id="be" value="be">
-			<label class="form-check-label" for="be">Weißrussisch</label>
-		</div>
+		<select class="custom-select custom-select-lg mb-3" name="languageSelect">
+			<option value="bg">Bulgarisch</option>
+			<option value="kk">Kasachisch</option>
+			<option value="ky">Kirgisisch</option>
+			<option value="mn">Mongolisch</option>
+			<option value="ru" selected>Russisch</option>
+			<option value="tg">Tadschikisch</option>
+			<option value="uk">Ukrainisch</option>
+			<option value="be">Weißrussisch</option>
+		</select>
 		<div class="form-group">
-		<label for="source" class="lead" autofocus>Original</label>
-		<textarea class="form-control" id="source"></textarea>
+		<label for="source" class="lead">Original</label>
+		<textarea class="form-control" id="source" autofocus></textarea>
 		<p></p>
 		<button type="button" class="btn btn-primary btn-block" id="button">Л &rarr; L</button>
 		<p></p>
