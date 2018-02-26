@@ -400,7 +400,6 @@ function transcribe (){
 		var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j 		
 		var transcription = transcription.replace(/й([аеоу])/g, "j$1"); // й vor а,е,о,у = j
 		var transcription = transcription.replace(/([аеоу])й/g, "$1i"); // й nach а,е,о,у = i 
-
 		var transcription = transcription.replace(/([цчшщ])ё/g, "$1o"); // ë nach ц,ч,ш,щ = o
 		var transcription = transcription.replace(/([АЕИЙОУЫЯЁЮЭаеийоуыэяёю])с([аеийоуыэьяёю])/g, "$1ss$2"); // с zwischen zwei von аеиоуыяёю = ss
 		var transcription = transcription.replace(/ь([аеиоу])/g, "j$1"); // ь vor Vokal = j
@@ -470,7 +469,70 @@ function transcribe (){
 		var transcription = transcription.replace(/ю/g, "ju");
 		var transcription = transcription.replace(/я/g, "ja");
 		// Regeln für die wissenschaftliche Transliteration
-		var transliteration = transliteration.replace(/ /g, " ");
+		var transliteration = transliteration.replace(/А/g, "A");
+		var transliteration = transliteration.replace(/Б/g, "B");
+		var transliteration = transliteration.replace(/В/g, "V");
+		var transliteration = transliteration.replace(/Г/g, "G");
+		var transliteration = transliteration.replace(/Д/g, "D");
+		var transliteration = transliteration.replace(/Е/g, "E");
+		var transliteration = transliteration.replace(/Ё/g, "Ë");
+		var transliteration = transliteration.replace(/Ж/g, "Ž");
+		var transliteration = transliteration.replace(/З/g, "Z");
+		var transliteration = transliteration.replace(/И/g, "I");
+		var transliteration = transliteration.replace(/Й/g, "J");
+		var transliteration = transliteration.replace(/К/g, "K");
+		var transliteration = transliteration.replace(/Л/g, "L");
+		var transliteration = transliteration.replace(/М/g, "M");
+		var transliteration = transliteration.replace(/Н/g, "N");
+		var transliteration = transliteration.replace(/О/g, "O");
+		var transliteration = transliteration.replace(/П/g, "P");
+		var transliteration = transliteration.replace(/Р/g, "R");
+		var transliteration = transliteration.replace(/С/g, "S");
+		var transliteration = transliteration.replace(/Т/g, "T");
+		var transliteration = transliteration.replace(/У/g, "U");
+		var transliteration = transliteration.replace(/Ф/g, "F");
+		var transliteration = transliteration.replace(/Х/g, "Ch");
+		var transliteration = transliteration.replace(/Ц/g, "C");
+		var transliteration = transliteration.replace(/Ч/g, "Č");
+		var transliteration = transliteration.replace(/Ш/g, "Š");
+		var transliteration = transliteration.replace(/Щ/g, "Šč");
+		var transliteration = transliteration.replace(/Ы/g, "Y");
+		var transliteration = transliteration.replace(/Э/g, "Ė");
+		var transliteration = transliteration.replace(/Ю/g, "Ju");
+		var transliteration = transliteration.replace(/Я/g, "Ja");
+		var transliteration = transliteration.replace(/а/g, "a");
+		var transliteration = transliteration.replace(/б/g, "b");
+		var transliteration = transliteration.replace(/в/g, "v");
+		var transliteration = transliteration.replace(/г/g, "g");
+		var transliteration = transliteration.replace(/д/g, "d");
+		var transliteration = transliteration.replace(/е/g, "e"); 
+		var transliteration = transliteration.replace(/ё/g, "ë");
+		var transliteration = transliteration.replace(/ж/g, "ž");
+		var transliteration = transliteration.replace(/з/g, "z");
+		var transliteration = transliteration.replace(/и/g, "i");
+		var transliteration = transliteration.replace(/й/g, "j");
+		var transliteration = transliteration.replace(/к/g, "k");
+		var transliteration = transliteration.replace(/л/g, "l");
+		var transliteration = transliteration.replace(/м/g, "m");
+		var transliteration = transliteration.replace(/н/g, "n");
+		var transliteration = transliteration.replace(/о/g, "o");
+		var transliteration = transliteration.replace(/п/g, "p");
+		var transliteration = transliteration.replace(/р/g, "r");
+		var transliteration = transliteration.replace(/с/g, "s");
+		var transliteration = transliteration.replace(/т/g, "t");
+		var transliteration = transliteration.replace(/у/g, "u");
+		var transliteration = transliteration.replace(/ф/g, "f");
+		var transliteration = transliteration.replace(/х/g, "ch");
+		var transliteration = transliteration.replace(/ц/g, "c");
+		var transliteration = transliteration.replace(/ч/g, "č");
+		var transliteration = transliteration.replace(/ш/g, "š");
+		var transliteration = transliteration.replace(/щ/g, "šč");
+		var transliteration = transliteration.replace(/ъ/g, "ʺ");
+		var transliteration = transliteration.replace(/ы/g, "y");
+		var transliteration = transliteration.replace(/ь/g, "'"); 
+		var transliteration = transliteration.replace(/э/g, "ė");
+		var transliteration = transliteration.replace(/ю/g, "ju");
+		var transliteration = transliteration.replace(/я/g, "ja");
 		break;
 
 	case "tg":
@@ -781,8 +843,8 @@ function transcribe (){
 		<p></p>
 		<label for="transcription" class="lead">Transkription</label>
 		<textarea class="form-control" id="transcription"></textarea>
-<!--		<label for="transliteration" class="lead">wissenschaftliche Transliteration</label> -->
-<!--		<textarea class="form-control" id="transliteration"></textarea> -->
+		<label for="transliteration" class="lead">wissenschaftliche Transliteration</label>
+		<textarea class="form-control" id="transliteration"></textarea>
 		<p></p>
 		<label for="copytemplate" class="lead">Wikipedia-Kopiervorlage</label>
 		<textarea class="form-control" id="copytemplate"></textarea>
