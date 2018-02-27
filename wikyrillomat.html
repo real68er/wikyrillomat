@@ -34,9 +34,9 @@ function transcribe (){
 		var transcription = transcription.replace(/([ԱԵԷԸԻՈՕաեէըիուօ])ս([աեէըիոօև])/g, "$1ss$2"); // ս zwischen zwei Vokalen = ss
 		var transcription = transcription.replace(/Ու/g, "U");
 		var transcription = transcription.replace(/ու/g, "u");
-		var transcription = transcription.replace(/(\s|$)ե/g, "je"); // ե im Anlaut = je
-		var transcription = transcription.replace(/(\s|$)ո/g, "wo"); // ո im Anlaut = wo
-		var transcription = transcription.replace(/(\s|$)և/g, "jew"); // և im Anlaut = jew
+		var transcription = transcription.replace(/(\s|$)ե/g, "$1je"); // ե im Anlaut = je
+		var transcription = transcription.replace(/(\s|$)ո/g, "$1wo"); // ո im Anlaut = wo
+		var transcription = transcription.replace(/(\s|$)և/g, "$1jew"); // և im Anlaut = jew
 		var transcription = transcription.replace(/([Իի])ւ/g, "$1u"); // ւ nach ի = u
 		// Einzelbuchstaben
 		var transcription = transcription.replace(/Ա/g, "A");
@@ -210,8 +210,8 @@ function transcribe (){
 		var transcription = transcription.replace(/Макс/g, "Max"); // кс in Vornamen mit griechischen Wurzeln = x
 		var transcription = transcription.replace(/Феликс/g, "Felix"); // кс in Vornamen mit griechischen Wurzeln = x
 		var transcription = transcription.replace(/([АӘЕІИОӨУҰҮЫЭЯЁЮаәеіиоөуұүыэяёю])е/g, "$1je"); // e nach Vokal = je
-		var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j 
 		var transcription = transcription.replace(/ий(\s|$)/g, "i$1"); // й nach и am Wortende weg
+		var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j 
 		var transcription = transcription.replace(/([АӘЕІИЙОӨУҰҮЫЭЯЁЮаәеіийоөуұүыэяёю])с([аәеіийоөуұүыэяёю])/g, "$1ss$2"); // с zwischen zwei von аәеіийоөуұүыэяёю = ss
 		var transcription = transcription.replace(/([АӘЕІИЙОӨУҰҮЫЭЯЁЮаәеіийоөуұүыэяёю])й([аәеіиоөуұүыэ])/g, "$1j$2"); // й vor а,е,о,у = j
 		var transcription = transcription.replace(/([АӘЕІИОӨУҰҮЫЭЯЁЮаәеіиоөуұүыэяёю])й/g, "$1i"); // й nach а,е,о,у = i 
@@ -316,8 +316,8 @@ function transcribe (){
 		var transcription = transcription.replace(/Макс/g, "Max"); // кс in Vornamen mit griechischen Wurzeln = x
 		var transcription = transcription.replace(/Феликс/g, "Felix"); // кс in Vornamen mit griechischen Wurzeln = x
 		var transcription = transcription.replace(/([АЕИЙОӨУҮЫЭЯЁЮаеийоөуүыэяёю])е/g, "$1je"); // e nach Vokal = je
-		var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j 
 		var transcription = transcription.replace(/ий$/g, "i"); // й nach и am Wortende weg
+		var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j
 		var transcription = transcription.replace(/й[аеиоөуүыэ]/g, "j$1"); // й vor а,е,о,у = j
 		var transcription = transcription.replace(/([аеиоөуүыэяёю])й/g, "$1i"); // й nach а,е,о,у = i 
 		var transcription = transcription.replace(/([цчшщ])ё/g, "$1o"); // ë nach ц,ч,ш,щ = o
@@ -642,8 +642,8 @@ function transcribe (){
 		var transcription = transcription.replace(/Феликс+/g, "Felix"); // кс in Vornamen mit griechischen Wurzeln = x
 		var transcription = transcription.replace(/([АЕИЙОУӮЫЯЁЮЭаеийоуӯыэяёю])е/g, "$1je"); // e nach Vokal = je
 		var transcription = transcription.replace(/ии/g, "iji"); //  ии = iji
-		var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j 
 		var transcription = transcription.replace(/ий$/g, "i"); // й nach и am Wortende weg
+		var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j 
 		var transcription = transcription.replace(/([аеийӣоуӯыэяёю])й/g, "$1i"); // й nach а,е,о,у = i 
 		var transcription = transcription.replace(/й[аеийӣоуӯыэяёю]/g, "ja"); // й vor а,е,о,у = j
 		var transcription = transcription.replace(/([цчшщ])ё/g, "$1o"); // ë nach ц,ч,ш,щ = o
@@ -916,7 +916,7 @@ function transcribe (){
 <div class="container">
 	<!-- Hinweis anzeigen, wenn kein JavaScript angeschaltet ist --><noscript><div id="jstest" class="alert alert-danger" role="alert">Um den vollen Funktionsumfang dieser Webseite zu erfahren, benötigen Sie JavaScript. Hier finden Sie die <a href="https://www.enable-javascript.com/de/" target="_blank">Anleitung wie Sie JavaScript in Ihrem Browser einschalten</a>.</div></noscript><script language="javascript"><!--document.getElementById("jstest").style.display="none";--></script>
 	<h1 class="display-4">Wikyrill-o-mat</h1>
-	<p class="lead">Transkription <!--und Transliteration -->bulgarischer, kasachischer, kirgisischer, mongolischer, russischer, tadschikischer, ukrainischer und weißrussischer Namen in kyrillischer Schrift in die deutsche Sprache.</p>
+	<p class="lead">Transkription <!--und Transliteration -->armenischer, bulgarischer, kasachischer, kirgisischer, mongolischer, russischer, tadschikischer, ukrainischer und weißrussischer Namen in kyrillischer Schrift in die deutsche Sprache.</p>
 	<p>Wählen Sie die Sprache aus, deren Regeln verwendet werden sollen, fügen Sie den kyrillischen Text in das Feld <em>Original</em> und klicken Sie auf den Button <em>Л &rarr; L</em>.</p>
 	<form name="theForm">
 		<label class="lead">Sprache des Originals</label>
