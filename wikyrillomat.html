@@ -25,6 +25,98 @@ function transcribe (){
 	var language = document.theForm.languageSelect.value;
 	// Ausführung je nach Sprache
 	switch (language) {
+			
+	case "hy":
+		// Setzen der Vorlage für die kyrillische Darstellung
+		var template = "hyS";
+		// ab hier wird ganz doof Regel nach Regel abgearbeitet
+		// Sonderfälle
+		var transcription = transcription.replace(/([ԱԵԷԸԻՈՕաեէըիուօ])ս([աեէըիոօև])/g, "$1ss$2"); // ս zwischen zwei Vokalen = ss
+		var transcription = transcription.replace(/Ու/g, "U");
+		var transcription = transcription.replace(/ու/g, "u");
+		var transcription = transcription.replace(/(\s|$)ե/g, "je"); // ե im Anlaut = je
+		var transcription = transcription.replace(/(\s|$)ո/g, "wo"); // ո im Anlaut = wo
+		var transcription = transcription.replace(/(\s|$)և/g, "jew"); // և im Anlaut = jew
+		var transcription = transcription.replace(/([Իի])ւ/g, "$1u"); // ւ nach ի = u
+		// Einzelbuchstaben
+		var transcription = transcription.replace(/Ա/g, "A");
+		var transcription = transcription.replace(/Բ/g, "B");
+		var transcription = transcription.replace(/Գ/g, "G");
+		var transcription = transcription.replace(/Դ/g, "D");
+		var transcription = transcription.replace(/Ե/g, "Je");
+		var transcription = transcription.replace(/Զ/g, "S");
+		var transcription = transcription.replace(/Է/g, "E");
+		var transcription = transcription.replace(/Ը/g, "E");
+		var transcription = transcription.replace(/Թ/g, "T");
+		var transcription = transcription.replace(/Ժ/g, "Sch");
+		var transcription = transcription.replace(/Ի/g, "I");
+		var transcription = transcription.replace(/Լ/g, "L");
+		var transcription = transcription.replace(/Խ/g, "Ch");
+		var transcription = transcription.replace(/Ծ/g, "Z");
+		var transcription = transcription.replace(/Կ/g, "K");
+		var transcription = transcription.replace(/Հ/g, "H");
+		var transcription = transcription.replace(/Ձ/g, "Ds");
+		var transcription = transcription.replace(/Ղ/g, "Gh");
+		var transcription = transcription.replace(/Ճ/g, "Tsch");
+		var transcription = transcription.replace(/Մ/g, "M");
+		var transcription = transcription.replace(/Յ/g, "J");
+		var transcription = transcription.replace(/Ն/g, "N");
+		var transcription = transcription.replace(/Շ/g, "Sch");
+		var transcription = transcription.replace(/Ո/g, "Wo");
+		var transcription = transcription.replace(/Չ/g, "Tsch");
+		var transcription = transcription.replace(/Պ/g, "P");
+		var transcription = transcription.replace(/Ջ/g, "Dsch");
+		var transcription = transcription.replace(/Ռ/g, "R");
+		var transcription = transcription.replace(/Ս/g, "S");
+		var transcription = transcription.replace(/Վ/g, "W");
+		var transcription = transcription.replace(/Տ/g, "T");
+		var transcription = transcription.replace(/Ր/g, "R");
+		var transcription = transcription.replace(/Ց/g, "Z");
+		var transcription = transcription.replace(/Ւ/g, "W");
+		var transcription = transcription.replace(/Փ/g, "P");
+		var transcription = transcription.replace(/Ք/g, "K");
+		var transcription = transcription.replace(/Օ/g, "O");
+		var transcription = transcription.replace(/Ֆ/g, "F");
+		var transcription = transcription.replace(/ա/g, "a");
+		var transcription = transcription.replace(/բ/g, "b");
+		var transcription = transcription.replace(/գ/g, "g");
+		var transcription = transcription.replace(/դ/g, "d");
+		var transcription = transcription.replace(/ե/g, "e");
+		var transcription = transcription.replace(/զ/g, "s");
+		var transcription = transcription.replace(/է/g, "e");
+		var transcription = transcription.replace(/ը/g, "e");
+		var transcription = transcription.replace(/թ/g, "t");
+		var transcription = transcription.replace(/ժ/g, "sch");
+		var transcription = transcription.replace(/ի/g, "i");
+		var transcription = transcription.replace(/լ/g, "l");
+		var transcription = transcription.replace(/խ/g, "ch");
+		var transcription = transcription.replace(/ծ/g, "z");
+		var transcription = transcription.replace(/կ/g, "k");
+		var transcription = transcription.replace(/հ/g, "h");
+		var transcription = transcription.replace(/ձ/g, "ds");
+		var transcription = transcription.replace(/ղ/g, "gh");
+		var transcription = transcription.replace(/ճ/g, "tsch");
+		var transcription = transcription.replace(/մ/g, "m");
+		var transcription = transcription.replace(/յ/g, "j");
+		var transcription = transcription.replace(/ն/g, "n");
+		var transcription = transcription.replace(/շ/g, "sch");
+		var transcription = transcription.replace(/ո/g, "o");
+		var transcription = transcription.replace(/չ/g, "tsch");
+		var transcription = transcription.replace(/պ/g, "p");
+		var transcription = transcription.replace(/ջ/g, "dsch");
+		var transcription = transcription.replace(/ռ/g, "r");
+		var transcription = transcription.replace(/ս/g, "s");
+		var transcription = transcription.replace(/վ/g, "w");
+		var transcription = transcription.replace(/տ/g, "t");
+		var transcription = transcription.replace(/ր/g, "r");
+		var transcription = transcription.replace(/ց/g, "z");
+		var transcription = transcription.replace(/ւ/g, "w");
+		var transcription = transcription.replace(/փ/g, "p");
+		var transcription = transcription.replace(/ք/g, "k");
+		var transcription = transcription.replace(/օ/g, "o");
+		var transcription = transcription.replace(/ֆ/g, "f");
+		var transcription = transcription.replace(/և/g, "ew");
+		break;
 
 	case "bg":
 		// Setzen der Vorlage für die kyrillische Darstellung
@@ -102,7 +194,7 @@ function transcribe (){
 		// Regeln für die wissenschaftliche Transliteration
 		var transliteration = transliteration.replace(/ /g, " ");
 		break;
-
+			
 	case "kk":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "kkS-Cyrl";
@@ -826,6 +918,7 @@ function transcribe (){
 	<form name="theForm">
 		<label class="lead">Sprache des Originals</label>
 		<select class="custom-select custom-select-lg mb-3" name="languageSelect">
+			<option value="hy">Armenisch</option>
 			<option value="bg">Bulgarisch</option>
 			<option value="kk">Kasachisch</option>
 			<option value="ky">Kirgisisch</option>
