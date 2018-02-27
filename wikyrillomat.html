@@ -2,6 +2,8 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script>
 'use strict';
@@ -10,10 +12,8 @@
 		var button = document.querySelector('button');
 		button.addEventListener('click', transcribe);
 	}
-
 	document.addEventListener('DOMContentLoaded', init);
 }());
-
 function transcribe (){
 	// Auslesen des Originaltextes
 	var source = document.getElementById("source").value;
@@ -116,8 +116,10 @@ function transcribe (){
 		var transcription = transcription.replace(/օ/g, "o");
 		var transcription = transcription.replace(/ֆ/g, "f");
 		var transcription = transcription.replace(/և/g, "ew");
+		// Regeln für die wissenschaftliche Transliteration
+		var transliteration = ""; // Zeile löschen, wenn Transliterationsregeln für diese Sprache eingetragen wurden
+		var transliteration = transliteration.replace(/ /g, " ");
 		break;
-
 	case "bg":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "bgS";
@@ -192,6 +194,7 @@ function transcribe (){
 		var transcription = transcription.replace(/ю/g, "ju");
 		var transcription = transcription.replace(/я/g, "ja");
 		// Regeln für die wissenschaftliche Transliteration
+		var transliteration = ""; // Zeile löschen, wenn Transliterationsregeln für diese Sprache eingetragen wurden
 		var transliteration = transliteration.replace(/ /g, " ");
 		break;
 			
@@ -298,9 +301,9 @@ function transcribe (){
 		var transcription = transcription.replace(/ю/g, "ju");
 		var transcription = transcription.replace(/я/g, "ja");
 		// Regeln für die wissenschaftliche Transliteration
+		var transliteration = ""; // Zeile löschen, wenn Transliterationsregeln für diese Sprache eingetragen wurden
 		var transliteration = transliteration.replace(/ /g, " ");
 		break;
-
 	case "ky":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "kyS-Cyrl";
@@ -392,9 +395,9 @@ function transcribe (){
 		var transcription = transcription.replace(/ю/g, "ju");
 		var transcription = transcription.replace(/я/g, "ja");
 		// Regeln für die wissenschaftliche Transliteration
+		var transliteration = ""; // Zeile löschen, wenn Transliterationsregeln für diese Sprache eingetragen wurden
 		var transliteration = transliteration.replace(/ /g, " ");
 		break;
-
 	case "mn":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "mnS-Cyrl";
@@ -469,9 +472,9 @@ function transcribe (){
 		var transcription = transcription.replace(/ю/g, "ju");
 		var transcription = transcription.replace(/я/g, "ja");
 		// Regeln für die wissenschaftliche Transliteration
+		var transliteration = ""; // Zeile löschen, wenn Transliterationsregeln für diese Sprache eingetragen wurden
 		var transliteration = transliteration.replace(/ /g, " ");
 		break;
-
 	case "ru":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "ruS";
@@ -626,7 +629,6 @@ function transcribe (){
 		var transliteration = transliteration.replace(/ю/g, "ju");
 		var transliteration = transliteration.replace(/я/g, "ja");
 		break;
-
 	case "tg":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "tgS-Cyrl";
@@ -725,9 +727,9 @@ function transcribe (){
 		var transcription = transcription.replace(/ю/g, "ju");
 		var transcription = transcription.replace(/я/g, "ja");
 		// Regeln für die wissenschaftliche Transliteration
+		var transliteration = ""; // Zeile löschen, wenn Transliterationsregeln für diese Sprache eingetragen wurden
 		var transliteration = transliteration.replace(/ /g, " ");
 		break;
-
 	case "uk":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "ukS-Cyrl";
@@ -803,9 +805,9 @@ function transcribe (){
 		var transcription = transcription.replace(/я/g, "ja");
 		var transcription = transcription.replace(/'|’/g, "");
 		// Regeln für die wissenschaftliche Transliteration
+		var transliteration = ""; // Zeile löschen, wenn Transliterationsregeln für diese Sprache eingetragen wurden
 		var transliteration = transliteration.replace(/ /g, " ");
 		break;
-
 	case "be":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "beS";
@@ -883,6 +885,7 @@ function transcribe (){
 		// Apostroph
 		var transcription = transcription.replace(/'/g, "");
 		// Regeln für die wissenschaftliche Transliteration
+		var transliteration = ""; // Zeile löschen, wenn Transliterationsregeln für diese Sprache eingetragen wurden
 		var transliteration = transliteration.replace(/ /g, " ");
 		break;
 	default:
@@ -892,17 +895,17 @@ function transcribe (){
 	// Einfügen der Transkription in das entsprechende Feld
 	document.getElementById("transcription").value = transcription;
 	// Einfügen der Transliteration in das entsprechende Feld
-//	document.getElementById("transliteration").value = transliteration;
+	document.getElementById("transliteration").value = transliteration;
 	// Einfügen von Quelle, Transkription und Transliteration in Matrizes
 	const arrayOfSource = source.split("\n");
 	const arrayOfTranscription = transcription.split("\n");
-//	const arrayOfTransliteration = transliteration.split("\n");
+	const arrayOfTransliteration = transliteration.split("\n");
 	// Leeren des Feldes für die Wikipedia-Kopiervorlage
 	document.getElementById("copytemplate").value = "";
 	// Befüllen des Feldes für die Wikipedia-Kopiervorlage
 	for(var i = 0;i < arrayOfSource.length;i++){ 
 		document.getElementById("copytemplate").value = document.getElementById("copytemplate").value + "'''" + arrayOfTranscription[i].trim() + "''' ({{" + template + "|" + arrayOfSource[i].trim() + "}}";
-//		document.getElementById("copytemplate").value = document.getElementById("copytemplate").value + ", wiss. [[Transliteration]] ''{{lang|" + language + "-Latn|" + arrayOfTransliteration[i].trim() + "}}''";		
+		document.getElementById("copytemplate").value = document.getElementById("copytemplate").value + ", wiss. [[Transliteration]] ''{{lang|" + language + "-Latn|" + arrayOfTransliteration[i].trim() + "}}''";		
 		if (arrayOfSource.length > 1 && i < arrayOfSource.length - 1) {document.getElementById("copytemplate").value = document.getElementById("copytemplate").value + "\n";}
 	}
 }
@@ -945,5 +948,9 @@ function transcribe (){
 	</form>
 	<p>Dieses Tool verwendet die <a href="https://de.wikipedia.org/wiki/Wikipedia:Namenskonventionen/Kyrillisch">Transkriptionsregeln für die deutschsprachige Wikipedia</a>. Fragen und Anmerkungen hinterlassen Sie bitte auf der <a href="https://de.wikipedia.org/wiki/Wikipedia_Diskussion:Namenskonventionen/Kyrillisch">Diskussionsseite in der Wikipedia</a>.</p>
 </div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<a href="https://github.com/swallroth/wikyrillomat"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"></a>
 </body>
 </html>
