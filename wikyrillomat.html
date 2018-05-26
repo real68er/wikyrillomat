@@ -131,8 +131,9 @@ function transcribe (){
 		var transcription = transcription.replace(/Ксен/g, "Xen"); // кс in Vornamen mit griechischen Wurzeln = x
 		var transcription = transcription.replace(/Макс/g, "Max"); // кс in Vornamen mit griechischen Wurzeln = x
 		var transcription = transcription.replace(/Феликс/g, "Felix"); // кс in Vornamen mit griechischen Wurzeln = x
-		var transcription = transcription.replace(/([АЕИЙОУЪЯЁЮаеийоуъяёю])с([аеийоуъьяёю])/g, "$1ss$2"); // с zwischen zwei von аеийоуъяёю = ss
+		var transcription = transcription.replace(/([АЕИЙОУЪЯЁЮаеийоуъяёю])с([аеийоуъяёю])/g, "$1ss$2"); // с zwischen zwei von аеийоуъяёю = ss
 		var transcription = transcription.replace(/ь([аеиоуъ])/g, "j$1"); // ь vor Vokal = j
+		var transcription = transcription.replace(/([АЕИЙОУЪЯЁЮаеийоуъяёю])с([j])/g, "$1ss$2"); // с zwischen Vokal und ь+Vokal = ss
 		// Einzelbuchstaben
 		var transcription = transcription.replace(/А/g, "A");
 		var transcription = transcription.replace(/Б/g, "B");
@@ -498,8 +499,9 @@ function transcribe (){
 		var transcription = transcription.replace(/й([аеоу])/g, "j$1"); // й vor а,е,о,у = j
 		var transcription = transcription.replace(/([аеоу])й/g, "$1i"); // й nach а,е,о,у = i 
 		var transcription = transcription.replace(/([цчшщ])ё/g, "$1o"); // ë nach ц,ч,ш,щ = o
-		var transcription = transcription.replace(/([АЕИЙОУЫЯЁЮЭаеийоуыэяёю])с([аеийоуыэьяёю])/g, "$1ss$2"); // с zwischen zwei von аеиоуыяёю = ss
+		var transcription = transcription.replace(/([АЕИЙОУЫЯЁЮЭаеийоуыэяёю])с([аеийоуыэяёю])/g, "$1ss$2"); // с zwischen zwei von аеиоуыяёю = ss
 		var transcription = transcription.replace(/ь([аеиоу])/g, "j$1"); // ь vor Vokal = j
+		var transcription = transcription.replace(/([АЕИЙОУЫЯЁЮЭаеийоуыэяёю])с([j])/g, "$1ss$2"); // с zwischen Vokal und ь+Vokal = ss
 		// Einzelbuchstaben
 		var transcription = transcription.replace(/А/g, "A");
 		var transcription = transcription.replace(/Б/g, "B");
@@ -737,8 +739,9 @@ function transcribe (){
 		var template = "ukS-Cyrl";
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle 
-		var transcription = transcription.replace(/([АЕІЇИЙОУЯЮЄаеіїийоуяює])с([аеіїийоуьяює])/g, "$1ss$2"); // с zwischen zwei von аеіїийоуьяює = ss
+		var transcription = transcription.replace(/([АЕІЇИЙОУЯЮЄаеіїийоуяює])с([аеіїийоуяює])/g, "$1ss$2"); // с zwischen zwei von аеіїийоуьяює = ss
 		var transcription = transcription.replace(/ь([аеіиоу])/g, "j$1"); // ь vor аеіиоу = j
+		var transcription = transcription.replace(/([АЕІЇИЙОУЯЮЄаеіїийоуяює])с([j])/g, "$1ss$2"); // с zwischen Vokal und ь+Vokal = ss
 		// Einzelbuchstaben
 		var transcription = transcription.replace(/А/g, "A");
 		var transcription = transcription.replace(/Б/g, "B");
@@ -815,9 +818,10 @@ function transcribe (){
 		var template = "beS";
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle 
-		var transcription = transcription.replace(/([АЕІЙОУЎЫЭЯЁЮаеійоуўыэяёю])с([аеійоуўыэьяёю])/g, "$1ss$2"); // с zwischen zwei von аеійоуўыэьяёю = ss
+		var transcription = transcription.replace(/([АЕІЙОУЎЫЭЯЁЮаеійоуўыэяёю])с([аеійоуўыэяёю])/g, "$1ss$2"); // с zwischen zwei von аеійоуўыэьяёю = ss
 		var transcription = transcription.replace(/([аеійоуўыэяёю'’])е/g, "$1je"); // e nach Vokal = je
 		var transcription = transcription.replace(/ь([аеійоуўыэ])/g, "j$1"); // ь vor аеійоуўыэ = j
+		var transcription = transcription.replace(/([АЕІЙОУЎЫЭЯЁЮаеійоуўыэяёю])с([j])/g, "$1ss$2"); // с zwischen Vokal und ь+Vokal = ss
 		// Einzelbuchstaben
 		var transcription = transcription.replace(/А/g, "A");
 		var transcription = transcription.replace(/Б/g, "B");
