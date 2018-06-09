@@ -912,7 +912,7 @@ function transcribe (){
 	// Befüllen des Feldes für die Wikipedia-Kopiervorlage
 	for(var i = 0;i < arrayOfSource.length;i++){ 
 		document.getElementById("copytemplate").value = document.getElementById("copytemplate").value + "'''" + arrayOfTranscription[i].trim() + "''' ({{" + template + "|" + arrayOfSource[i].trim() + "}}";
-		document.getElementById("copytemplate").value = document.getElementById("copytemplate").value + ", wiss. [[Transliteration]] ''{{lang|" + language + "-Latn|" + arrayOfTransliteration[i].trim() + "}}''";		
+		if (transliteration != "") {document.getElementById("copytemplate").value = document.getElementById("copytemplate").value + ", wiss. [[Transliteration]] ''{{lang|" + language + "-Latn|" + arrayOfTransliteration[i].trim() + "}}''";}
 		if (arrayOfSource.length > 1 && i < arrayOfSource.length - 1) {document.getElementById("copytemplate").value = document.getElementById("copytemplate").value + "\n";}
 	}
 }
