@@ -1,7 +1,7 @@
 # wikyrill-o-mat
 Transkriptionstool Kyrillisch - Deutsch
 
-Transkription bulgarischer, kasachischer, kirgisischer, mongolischer, russischer, tadschikischer, ukrainischer und weißrussischer Namen in kyrillischer Schrift in die deutsche Sprache.
+Transkription armenischer, bulgarischer, kasachischer, kirgisischer, mongolischer, russischer, tadschikischer, ukrainischer und weißrussischer Namen in kyrillischer Schrift in die deutsche Sprache.
 
 Bedienung: Wählen Sie die Sprache aus, deren Transkriptionsregeln verwendet werden sollen, fügen Sie den kyrillischen Text in das Feld Original und klicken Sie auf den Button Л → L.
 
