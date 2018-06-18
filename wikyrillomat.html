@@ -492,6 +492,7 @@ function transcribe (){
 		var transcription = transcription.replace(/Феликс/g, "Felix"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
 		var transcription = transcription.replace(/Авксент/g, "Awxent"); // кс in Vor- und Vatersnamen mit griechischen Wurzeln = x
 		var transcription = transcription.replace(/([АЕИЙОУЫЯЁЮЭаеийоуыэяёю])е/g, "$1je"); // e nach Vokal = je
+		var transcription = transcription.replace(/([АЕИЙОУЫЯЁЮЭаеийоуыэяёю])с([аеийоуыэяёю])/g, "$1ss$2"); // с zwischen zwei von аеиоуыяёю = ss
 		var transcription = transcription.replace(/ий(\s|$)/g, "i$1"); // й nach и am Wortende weg
 		var transcription = transcription.replace(/ый(\s|$)/g, "y$1"); // й nach ы am Wortende weg
 		var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j 
@@ -499,7 +500,6 @@ function transcribe (){
 		var transcription = transcription.replace(/й([аеоу])/g, "j$1"); // й vor а,е,о,у = j
 		var transcription = transcription.replace(/([аеоу])й/g, "$1i"); // й nach а,е,о,у = i 
 		var transcription = transcription.replace(/([цчшщ])ё/g, "$1o"); // ë nach ц,ч,ш,щ = o
-		var transcription = transcription.replace(/([АЕИЙОУЫЯЁЮЭаеийоуыэяёю])с([аеийоуыэяёю])/g, "$1ss$2"); // с zwischen zwei von аеиоуыяёю = ss
 		var transcription = transcription.replace(/ь([аеиоу])/g, "j$1"); // ь vor Vokal = j
 		var transcription = transcription.replace(/([АЕИЙОУЫЯЁЮЭаеийоуыэяёю])с([j])/g, "$1ss$2"); // с zwischen Vokal und ь+Vokal = ss
 		// Einzelbuchstaben
