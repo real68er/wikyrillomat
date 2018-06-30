@@ -1,5 +1,5 @@
 # wikyrill-o-mat
-Transkriptionstool Kyrillisch - Deutsch
+Transkriptionstool Kyrillisch, Armenisch, Georgisch - Deutsch
 
 Transkription armenischer, bulgarischer, georgischer, kasachischer, kirgisischer, mongolischer, russischer, tadschikischer, ukrainischer und weißrussischer Namen in die deutsche Sprache.
 
