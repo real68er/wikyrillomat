@@ -14,6 +14,30 @@
 	}
 	document.addEventListener('DOMContentLoaded', init);
 }());
+// Verarbeitung von URL-Parametern
+window.onload = function () {
+	getUrlVars();
+	var parOrig = decodeURI(getUrlVars()["orig"]);
+	if (parOrig != '' && parOrig != 'undefined') {document.getElementById("source").value = parOrig;}
+	var parLang = decodeURI(getUrlVars()["lang"]);
+	if (parLang != '' && parLang != 'undefined') {document.theForm.languageSelect.value = parLang;}
+	var parMode = decodeURI(getUrlVars()["mode"]);
+	if (parMode == 'html') {
+		transcribe();
+	}
+	if (parMode == 'text') {
+		transcribe();
+		document.write(document.getElementById("transcription").value);
+	}
+}
+// Auslesen von URL-Parametern
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
 function transcribe (){
 	// Auslesen des Originaltextes
 	var source = document.getElementById("source").value;
@@ -1096,6 +1120,7 @@ function transcribe (){
 		</div>
 	</form>
 	<p>Dieses Tool verwendet die Transkriptionsregeln der deutschsprachigen Wikipedia für <a href="https://de.wikipedia.org/wiki/Wikipedia:Namenskonventionen/Kyrillisch">kyrillische</a>, <a href="https://de.wikipedia.org/wiki/Wikipedia:Namenskonventionen/Armenisch">armenische</a> und <a href="https://de.wikipedia.org/wiki/Wikipedia:Namenskonventionen/Georgisch">georgische</a> Namen. Fragen und Anmerkungen hinterlassen Sie bitte auf der <a href="https://de.wikipedia.org/wiki/Wikipedia_Diskussion:Wikyrill-o-mat">Diskussionsseite dieses Tools in der Wikipedia</a>.</p>
+	<p>Folgende <b>URL-Parameter</b> werden verarbeitet: <b>orig</b> füllt das Feld <em>Original</em> aus, <b>lang</b> setzt die Sprache im Dropdown <em>Sprache des Originals</em>, <b>mode</b> führt beim Wert <em>html</em> die Transkription aus und gibt beim Wert <em>text</em> nur die Transkription zurück. <b>Beispiel</b> <a href="http://wikyrillom.at/?orig=%D4%B1%D6%80%D5%A1%D5%B4%20%D4%BD%D5%A1%D5%B9%D5%A1%D5%BF%D6%80%D5%B5%D5%A1%D5%B6&lang=hy&mode=html">http://wikyrillom.at/?orig=%D4%B1%D6%80%D5%A1%D5%B4%20%D4%BD%D5%A1%D5%B9%D5%A1%D5%BF%D6%80%D5%B5%D5%A1%D5%B6&lang=hy&mode=html</a></p>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
