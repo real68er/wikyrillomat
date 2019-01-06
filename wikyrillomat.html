@@ -22,12 +22,18 @@ window.onload = function () {
 	var parLang = decodeURI(getUrlVars()["lang"]);
 	if (parLang != '' && parLang != 'undefined') {document.theForm.languageSelect.value = parLang;}
 	var parMode = decodeURI(getUrlVars()["mode"]);
-	if (parMode == 'html') {
+	switch (parMode) {
+	case "html":
 		transcribe();
-	}
-	if (parMode == 'text') {
+		break;
+	case "text":
 		transcribe();
 		document.write(document.getElementById("transcription").value);
+		break;
+	case "prompt":
+		transcribe();
+		prompt('Transkiption von '+document.getElementById("source").value+' ('+document.theForm.languageSelect.options[document.theForm.languageSelect.selectedIndex].text+')',document.getElementById("transcription").value);
+		break;
 	}
 }
 // Auslesen von URL-Parametern
