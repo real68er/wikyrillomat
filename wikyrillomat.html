@@ -14,7 +14,6 @@
 	}
 	document.addEventListener('DOMContentLoaded', init);
 }());
-// Verarbeitung von URL-Parametern
 window.onload = function () {
 	getUrlVars();
 	var parOrig = decodeURI(getUrlVars()["orig"]);
@@ -36,17 +35,20 @@ window.onload = function () {
 		break;
 	}
 }
-// Auslesen von URL-Parametern
+
 function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
+	var vars = {};
+	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		vars[key] = value;
+	});
+	return vars;
 }
+
 function transcribe (){
 	// Auslesen des Originaltextes
 	var source = document.getElementById("source").value;
+	// Entfernen des Unicode Character 'COMBINING ACUTE ACCENT' (U+0301)
+	source = source.replace(/\u0301/g, '');
 	// Initialisierung der Transkription
 	var transcription = source;
 	// Initialisierung der Transliteration
@@ -55,10 +57,15 @@ function transcribe (){
 	var language = document.theForm.languageSelect.value;
 	// Ausführung je nach Sprache
 	switch (language) {
-			
 	case "hy":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "hyS";
+		// Initialisierung der Warnbox
+		var transcriptionAlert = document.getElementById("transcriptionAlert");
+		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
+		var testedTranscription = transcription.replace(/[ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔՕՖաբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքօֆև -,]/gi, '');
+		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle
 		var transcription = transcription.replace(/([ԱԵԷԸԻՈՕաեէըիուօ])ս([աեէըիոօև])/g, "$1ss$2"); // ս zwischen zwei Vokalen = ss
@@ -153,6 +160,12 @@ function transcribe (){
 	case "bg":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "bgS";
+		// Initialisierung der Warnbox
+		var transcriptionAlert = document.getElementById("transcriptionAlert");
+		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
+		var testedTranscription = transcription.replace(/[АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЮЯабвгдежзийклмнопрстуфхцчшщъьюя -,]/gi, '');
+		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Regeln für Transkription
 		// Sonderfälle
@@ -231,6 +244,12 @@ function transcribe (){
 	case "ka":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "kaS";
+		// Initialisierung der Warnbox
+		var transcriptionAlert = document.getElementById("transcriptionAlert");
+		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
+		var testedTranscription = transcription.replace(/[აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰაბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ -,]/gi, '');
+		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle
 		var transcription = transcription.replace(/([აეიოუ])ს([აეიოუ])/g, "$1ss$2"); // ს zwischen zwei Vokalen = ss
@@ -308,6 +327,12 @@ function transcribe (){
 	case "kk":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "kkS-Cyrl";
+		// Initialisierung der Warnbox
+		var transcriptionAlert = document.getElementById("transcriptionAlert");
+		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
+		var testedTranscription = transcription.replace(/[АӘБВГҒДЕЁЖЗІИЙКҚЛМНҢОӨПРСТУҰҮФХҺЦЧШЩЫЭЮЯаәбвгғдеёжзіийкқлмнңоөпрстуұүфхһцчшщъыьэюя -,]/gi, '');
+		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle
 		var transcription = transcription.replace(/Александр(\s|$)/g, "Alexander$1"); // Александр = Alexander
@@ -414,6 +439,12 @@ function transcribe (){
 	case "ky":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "kyS-Cyrl";
+		// Initialisierung der Warnbox
+		var transcriptionAlert = document.getElementById("transcriptionAlert");
+		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
+		var testedTranscription = transcription.replace(/[АБВГДЕЁЖЗИЙКЛМНҢОӨПРСТУҮФХЦЧШЩЫЭЮЯабвгдеёжзийклмнңоөпрстуүфхцчшщъыьэюя -,]/gi, '');
+		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle
 		var transcription = transcription.replace(/Александр(\s|$)/g, "Alexander$1"); // Александр = Alexander
@@ -508,6 +539,12 @@ function transcribe (){
 	case "mn":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "mnS-Cyrl";
+		// Initialisierung der Warnbox
+		var transcriptionAlert = document.getElementById("transcriptionAlert");
+		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
+		var testedTranscription = transcription.replace(/[АБВГДЕЁЖЗИЙКЛМНОӨПРСТУҮФХЦЧШЩЫЭЮЯабвгдеёжзийклмноөпрстуүфхцчшщъыьэюя -,]/gi, '');
+		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Einzelbuchstaben
 		var transcription = transcription.replace(/А/g, "A");
@@ -585,6 +622,12 @@ function transcribe (){
 	case "ru":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "ruS";
+		// Initialisierung der Warnbox
+		var transcriptionAlert = document.getElementById("transcriptionAlert");
+		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
+		var testedTranscription = transcription.replace(/[АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЫЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя -,]/gi, '');
+		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle 
 		var transcription = transcription.replace(/Александр(\s|$)/g, "Alexander$1"); // Александр = Alexander
@@ -742,6 +785,12 @@ function transcribe (){
 	case "tg":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "tgS-Cyrl";
+		// Initialisierung der Warnbox
+		var transcriptionAlert = document.getElementById("transcriptionAlert");
+		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
+		var testedTranscription = transcription.replace(/[АБВГҒДЕЁЖЗИЙӢКҚЛМНОПРСТУӮФХҲЦЧҶШЩЫЭЮЯабвгғдеёжзийӣкқлмнопрстуӯфхҳцчҷшщъыьэюя -,]/gi, '');
+		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle
 		var transcription = transcription.replace(/Александр(\s|$)/g, "Alexander$1"); // Александр = Alexander
@@ -751,7 +800,7 @@ function transcribe (){
 		var transcription = transcription.replace(/Макс+/g, "Max"); // кс in Vornamen mit griechischen Wurzeln = x
 		var transcription = transcription.replace(/Феликс+/g, "Felix"); // кс in Vornamen mit griechischen Wurzeln = x
 		var transcription = transcription.replace(/([АЕИЙОУӮЫЯЁЮЭаеийоуӯыэяёю])е/g, "$1je"); // e nach Vokal = je
-		var transcription = transcription.replace(/ии/g, "iji"); //  ии = iji
+		var transcription = transcription.replace(/ии/g, "iji"); // ии = iji
 		var transcription = transcription.replace(/ий$/g, "i"); // й nach и am Wortende weg
 		var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j 
 		var transcription = transcription.replace(/([аеийӣоуӯыэяёю])й/g, "$1i"); // й nach а,е,о,у = i 
@@ -843,6 +892,12 @@ function transcribe (){
 	case "uk":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "ukS-Cyrl";
+		// Initialisierung der Warnbox
+		var transcriptionAlert = document.getElementById("transcriptionAlert");
+		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
+		var testedTranscription = transcription.replace(/[АБВГҐДЕЖЗІЇИЙКЛМНОПРСТУФХЦЧШЩЄЮЯабвгґдежзіїийклмнопрстуфхцчшщьєюя -,]/gi, '');
+		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle 
 		var transcription = transcription.replace(/([АЕІЇИЙОУЯЮЄаеіїийоуяює])с([аеіїийоуяює])/g, "$1ss$2"); // с zwischen zwei von аеіїийоуьяює = ss
@@ -987,6 +1042,12 @@ function transcribe (){
 	case "be":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "beS";
+		// Initialisierung der Warnbox
+		var transcriptionAlert = document.getElementById("transcriptionAlert");
+		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
+		var testedTranscription = transcription.replace(/[АБВГҐДЕЖЗІЙКЛМНОПРСТУЎФХЦЧШЫЭЮЁЯабвгґдежзійклмнопрстуўфхцчшьыэюёя -,]/gi, '');
+		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle 
 		var transcription = transcription.replace(/([АЕІЙОУЎЫЭЯЁЮаеійоуўыэяёю])с([аеійоуўыэяёю])/g, "$1ss$2"); // с zwischen zwei von аеійоуўыэьяёю = ss
@@ -1059,9 +1120,6 @@ function transcribe (){
 		var transcription = transcription.replace(/ю/g, "ju");
 		var transcription = transcription.replace(/ё/g, "jo");
 		var transcription = transcription.replace(/я/g, "ja");
-		// Apostroph
-		var transcription = transcription.replace(/'/g, "");
-		var transcription = transcription.replace(/’/g, "");
 		// Regeln für die wissenschaftliche Transliteration
 		var transliteration = ""; // Zeile löschen, wenn Transliterationsregeln für diese Sprache eingetragen wurden
 		var transliteration = transliteration.replace(/ /g, " ");
@@ -1116,6 +1174,7 @@ function transcribe (){
 		<p></p>
 		<button type="button" class="btn btn-primary btn-block" id="button">Л &rarr; L</button>
 		<p></p>
+		<div id="transcriptionAlert" class="alert alert-warning" role="alert" style="display:none;"></div>
 		<label for="transcription" class="lead">Transkription</label>
 		<textarea class="form-control" id="transcription"></textarea>
 		<label for="transliteration" class="lead">wissenschaftliche Transliteration</label>
@@ -1126,7 +1185,6 @@ function transcribe (){
 		</div>
 	</form>
 	<p>Dieses Tool verwendet die Transkriptionsregeln der deutschsprachigen Wikipedia für <a href="https://de.wikipedia.org/wiki/Wikipedia:Namenskonventionen/Kyrillisch">kyrillische</a>, <a href="https://de.wikipedia.org/wiki/Wikipedia:Namenskonventionen/Armenisch">armenische</a> und <a href="https://de.wikipedia.org/wiki/Wikipedia:Namenskonventionen/Georgisch">georgische</a> Namen. Fragen und Anmerkungen hinterlassen Sie bitte auf der <a href="https://de.wikipedia.org/wiki/Wikipedia_Diskussion:Wikyrill-o-mat">Diskussionsseite dieses Tools in der Wikipedia</a>.</p>
-	<p>Folgende <b>URL-Parameter</b> werden verarbeitet: <b>orig</b> füllt das Feld <em>Original</em> aus, <b>lang</b> setzt die Sprache im Dropdown <em>Sprache des Originals</em>, <b>mode</b> führt beim Wert <em>html</em> die Transkription aus und gibt beim Wert <em>text</em> nur die Transkription zurück. <b>Beispiel</b> <a href="http://wikyrillom.at/?orig=%D4%B1%D6%80%D5%A1%D5%B4%20%D4%BD%D5%A1%D5%B9%D5%A1%D5%BF%D6%80%D5%B5%D5%A1%D5%B6&lang=hy&mode=html">http://wikyrillom.at/?orig=%D4%B1%D6%80%D5%A1%D5%B4%20%D4%BD%D5%A1%D5%B9%D5%A1%D5%BF%D6%80%D5%B5%D5%A1%D5%B6&lang=hy&mode=html</a></p>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
