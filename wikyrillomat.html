@@ -22,16 +22,12 @@ window.onload = function () {
 	if (parLang != '' && parLang != 'undefined') {document.theForm.languageSelect.value = parLang;}
 	var parMode = decodeURI(getUrlVars()["mode"]);
 	switch (parMode) {
-	case "html":
-		transcribe();
-		break;
-	case "text":
-		transcribe();
-		document.write(document.getElementById("transcription").value);
-		break;
 	case "prompt":
 		transcribe();
 		prompt('Transkiption von '+document.getElementById("source").value+' ('+document.theForm.languageSelect.options[document.theForm.languageSelect.selectedIndex].text+')',document.getElementById("transcription").value);
+		break;
+	default:
+		transcribe();
 		break;
 	}
 }
@@ -63,8 +59,8 @@ function transcribe (){
 		// Initialisierung der Warnbox
 		var transcriptionAlert = document.getElementById("transcriptionAlert");
 		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
-		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
-		var testedTranscription = transcription.replace(/[ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔՕՖաբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքօֆև -,]/gi, '');
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich, Komma, Zeilenumbrüche, Tabs und Whitespaces sind ok)
+		var testedTranscription = transcription.replace(/[ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔՕՖաբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքօֆև  \-,\n\r\t\s]/gi, '');
 		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle
@@ -163,8 +159,8 @@ function transcribe (){
 		// Initialisierung der Warnbox
 		var transcriptionAlert = document.getElementById("transcriptionAlert");
 		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
-		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
-		var testedTranscription = transcription.replace(/[АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЮЯабвгдежзийклмнопрстуфхцчшщъьюя -,]/gi, '');
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich, Komma, Zeilenumbrüche, Tabs und Whitespaces sind ok)
+		var testedTranscription = transcription.replace(/[АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЮЯабвгдежзийклмнопрстуфхцчшщъьюя  \-,\n\r\t\s]/gi, '');
 		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Regeln für Transkription
@@ -247,8 +243,8 @@ function transcribe (){
 		// Initialisierung der Warnbox
 		var transcriptionAlert = document.getElementById("transcriptionAlert");
 		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
-		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
-		var testedTranscription = transcription.replace(/[აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰაბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ -,]/gi, '');
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich, Komma, Zeilenumbrüche, Tabs und Whitespaces sind ok)
+		var testedTranscription = transcription.replace(/[აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰაბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ  \-,\n\r\t\s]/gi, '');
 		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle
@@ -330,8 +326,8 @@ function transcribe (){
 		// Initialisierung der Warnbox
 		var transcriptionAlert = document.getElementById("transcriptionAlert");
 		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
-		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
-		var testedTranscription = transcription.replace(/[АӘБВГҒДЕЁЖЗІИЙКҚЛМНҢОӨПРСТУҰҮФХҺЦЧШЩЫЭЮЯаәбвгғдеёжзіийкқлмнңоөпрстуұүфхһцчшщъыьэюя -,]/gi, '');
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich, Komma, Zeilenumbrüche, Tabs und Whitespaces sind ok)
+		var testedTranscription = transcription.replace(/[АӘБВГҒДЕЁЖЗІИЙКҚЛМНҢОӨПРСТУҰҮФХҺЦЧШЩЫЭЮЯаәбвгғдеёжзіийкқлмнңоөпрстуұүфхһцчшщъыьэюя  \-,\n\r\t\s]/gi, '');
 		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle
@@ -442,8 +438,8 @@ function transcribe (){
 		// Initialisierung der Warnbox
 		var transcriptionAlert = document.getElementById("transcriptionAlert");
 		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
-		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
-		var testedTranscription = transcription.replace(/[АБВГДЕЁЖЗИЙКЛМНҢОӨПРСТУҮФХЦЧШЩЫЭЮЯабвгдеёжзийклмнңоөпрстуүфхцчшщъыьэюя -,]/gi, '');
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich, Komma, Zeilenumbrüche, Tabs und Whitespaces sind ok)
+		var testedTranscription = transcription.replace(/[АБВГДЕЁЖЗИЙКЛМНҢОӨПРСТУҮФХЦЧШЩЫЭЮЯабвгдеёжзийклмнңоөпрстуүфхцчшщъыьэюя  \-,\n\r\t\s]/gi, '');
 		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle
@@ -542,8 +538,8 @@ function transcribe (){
 		// Initialisierung der Warnbox
 		var transcriptionAlert = document.getElementById("transcriptionAlert");
 		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
-		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
-		var testedTranscription = transcription.replace(/[АБВГДЕЁЖЗИЙКЛМНОӨПРСТУҮФХЦЧШЩЫЭЮЯабвгдеёжзийклмноөпрстуүфхцчшщъыьэюя -,]/gi, '');
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich, Komma, Zeilenumbrüche, Tabs und Whitespaces sind ok)
+		var testedTranscription = transcription.replace(/[АБВГДЕЁЖЗИЙКЛМНОӨПРСТУҮФХЦЧШЩЫЭЮЯабвгдеёжзийклмноөпрстуүфхцчшщъыьэюя  \-,\n\r\t\s]/gi, '');
 		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Einzelbuchstaben
@@ -625,8 +621,8 @@ function transcribe (){
 		// Initialisierung der Warnbox
 		var transcriptionAlert = document.getElementById("transcriptionAlert");
 		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
-		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
-		var testedTranscription = transcription.replace(/[АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЫЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя -,]/gi, '');
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich, Komma, Zeilenumbrüche, Tabs und Whitespaces sind ok)
+		var testedTranscription = transcription.replace(/[АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЫЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя  \-,\n\r\t\s]/gi, '');
 		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle 
@@ -788,8 +784,8 @@ function transcribe (){
 		// Initialisierung der Warnbox
 		var transcriptionAlert = document.getElementById("transcriptionAlert");
 		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
-		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
-		var testedTranscription = transcription.replace(/[АБВГҒДЕЁЖЗИЙӢКҚЛМНОПРСТУӮФХҲЦЧҶШЩЫЭЮЯабвгғдеёжзийӣкқлмнопрстуӯфхҳцчҷшщъыьэюя -,]/gi, '');
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich, Komma, Zeilenumbrüche, Tabs und Whitespaces sind ok)
+		var testedTranscription = transcription.replace(/[АБВГҒДЕЁЖЗИЙӢКҚЛМНОПРСТУӮФХҲЦЧҶШЩЫЭЮЯабвгғдеёжзийӣкқлмнопрстуӯфхҳцчҷшщъыьэюя  \-,\n\r\t\s]/gi, '');
 		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle
@@ -895,8 +891,8 @@ function transcribe (){
 		// Initialisierung der Warnbox
 		var transcriptionAlert = document.getElementById("transcriptionAlert");
 		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
-		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
-		var testedTranscription = transcription.replace(/[АБВГҐДЕЖЗІЇИЙКЛМНОПРСТУФХЦЧШЩЄЮЯабвгґдежзіїийклмнопрстуфхцчшщьєюя -,]/gi, '');
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich, Komma, Zeilenumbrüche, Tabs und Whitespaces sind ok)
+		var testedTranscription = transcription.replace(/[АБВГҐДЕЖЗІЇИЙКЛМНОПРСТУФХЦЧШЩЄЮЯабвгґдежзіїийклмнопрстуфхцчшщьєюя  \-,\n\r\t\s]/gi, '');
 		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle 
@@ -1045,8 +1041,8 @@ function transcribe (){
 		// Initialisierung der Warnbox
 		var transcriptionAlert = document.getElementById("transcriptionAlert");
 		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
-		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich und Komma sind ok)
-		var testedTranscription = transcription.replace(/[АБВГҐДЕЖЗІЙКЛМНОПРСТУЎФХЦЧШЫЭЮЁЯабвгґдежзійклмнопрстуўфхцчшьыэюёя -,]/gi, '');
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich, Komma, Zeilenumbrüche, Tabs und Whitespaces sind ok)
+		var testedTranscription = transcription.replace(/[АБВГҐДЕЖЗІЙКЛМНОПРСТУЎФХЦЧШЫЭЮЁЯабвгґдежзійклмнопрстуўфхцчшьыэюёя  \-,\n\r\t\s]/gi, '');
 		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Sonderfälle 
@@ -1185,6 +1181,7 @@ function transcribe (){
 		</div>
 	</form>
 	<p>Dieses Tool verwendet die Transkriptionsregeln der deutschsprachigen Wikipedia für <a href="https://de.wikipedia.org/wiki/Wikipedia:Namenskonventionen/Kyrillisch">kyrillische</a>, <a href="https://de.wikipedia.org/wiki/Wikipedia:Namenskonventionen/Armenisch">armenische</a> und <a href="https://de.wikipedia.org/wiki/Wikipedia:Namenskonventionen/Georgisch">georgische</a> Namen. Fragen und Anmerkungen hinterlassen Sie bitte auf der <a href="https://de.wikipedia.org/wiki/Wikipedia_Diskussion:Wikyrill-o-mat">Diskussionsseite dieses Tools in der Wikipedia</a>.</p>
+	<p>Das Tool kann <a href="https://de.wikipedia.org/wiki/Wikipedia:Wikyrill-o-mat#URL-Parameter">mit URL-Parametern gesteuert</a> werden. Es gibt <a href="https://de.wikipedia.org/wiki/Wikipedia:Wikyrill-o-mat#Bookmarklet">ein Bookmarklet</a> für dieses Tool.
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
