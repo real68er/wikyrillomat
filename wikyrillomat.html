@@ -453,7 +453,7 @@ function transcribe (){
 		var transcription = transcription.replace(/ий$/g, "i"); // й nach и am Wortende weg
 		var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j
 		var transcription = transcription.replace(/й[аеиоөуүыэ]/g, "j$1"); // й vor а,е,о,у = j
-		var transcription = transcription.replace(/([аеиоөуүыэяёю])й/g, "$1i"); // й nach а,е,о,у = i 
+		var transcription = transcription.replace(/([АЕИЙОӨУҮЫЭЯЁЮаеиоөуүыэяёю])й/g, "$1i"); // й nach а,е,о,у = i 
 		var transcription = transcription.replace(/([цчшщ])ё/g, "$1o"); // ë nach ц,ч,ш,щ = o
 		var transcription = transcription.replace(/([АЕИЙОӨУҮЫЭЯЁЮаеийоөуүыэяёю])с([аеийоөуүыэяёю])/g, "$1ss$2"); // с zwischen zwei von аәеіийоөуұүыэяёю = ss
 		var transcription = transcription.replace(/ь([аеиоөуүыэ])/g, "j$1"); // ь vor Vokal = j
