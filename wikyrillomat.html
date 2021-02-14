@@ -905,6 +905,7 @@ function transcribe (){
 		var transcription = transcription.replace(/([АЕІЇИЙОУЯЮЄаеіїийоуяює])с([аеіїийоуяює])/g, "$1ss$2"); // с zwischen zwei von аеіїийоуьяює = ss
 		var transcription = transcription.replace(/ь([аеіиоу])/g, "j$1"); // ь vor аеіиоу = j
 		var transcription = transcription.replace(/([АЕІЇИЙОУЯЮЄаеіїийоуяює])с([j])/g, "$1ss$2"); // с zwischen Vokal und ь+Vokal = ss
+		var transcription = transcription.replace(/([АЕІЇИЙОУЯЮЄаеіїийоуяює])сь([їяює])/g, "$1ss$2"); // с zwischen Vokal und ь+їяює = ss
 		// Einzelbuchstaben
 		var transcription = transcription.replace(/А/g, "A");
 		var transcription = transcription.replace(/Б/g, "B");
