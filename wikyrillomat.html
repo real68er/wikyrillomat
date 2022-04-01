@@ -165,11 +165,6 @@ function transcribe (){
 		// ab hier wird ganz doof Regel nach Regel abgearbeitet
 		// Regeln für Transkription
 		// Sonderfälle
-		var transcription = transcription.replace(/Алекс/g, "Alex"); // кс in Vornamen mit griechischen Wurzeln = x
-		var transcription = transcription.replace(/Оксан/g, "Oxan"); // кс in Vornamen mit griechischen Wurzeln = x
-		var transcription = transcription.replace(/Ксен/g, "Xen"); // кс in Vornamen mit griechischen Wurzeln = x
-		var transcription = transcription.replace(/Макс/g, "Max"); // кс in Vornamen mit griechischen Wurzeln = x
-		var transcription = transcription.replace(/Феликс/g, "Felix"); // кс in Vornamen mit griechischen Wurzeln = x
 		var transcription = transcription.replace(/([АЕИЙОУЪЯЁЮаеийоуъяёю])с([аеийоуъяёю])/g, "$1ss$2"); // с zwischen zwei von аеийоуъяёю = ss
 		var transcription = transcription.replace(/ь([аеиоуъ])/g, "j$1"); // ь vor Vokal = j
 		var transcription = transcription.replace(/([АЕИЙОУЪЯЁЮаеийоуъяёю])с([j])/g, "$1ss$2"); // с zwischen Vokal und ь+Vokal = ss
@@ -647,7 +642,7 @@ function transcribe (){
 		var transcription = transcription.replace(/ий/g, "ij"); // й nach и im Wort = j 
 		var transcription = transcription.replace(/ый/g, "yj"); // й nach ы im Wort = j 
 		var transcription = transcription.replace(/й([аеоу])/g, "j$1"); // й vor а,е,о,у = j
-		var transcription = transcription.replace(/([АЕОУаеоу])й/g, "$1i"); // й nach а,е,о,у = i 
+		var transcription = transcription.replace(/([АЕОУЯЁЮЭаеоуэяёю])й/g, "$1i"); // й nach а,е,о,у = i 
 		var transcription = transcription.replace(/([ЖЧШЩжчшщ])ё/g, "$1o"); // ë nach ж,ч,ш,щ = o
 		var transcription = transcription.replace(/ь([аеиоу])/g, "j$1"); // ь vor Vokal = j
 		var transcription = transcription.replace(/([АЕИЙОУЫЯЁЮЭаеийоуыэяёю])с([j])/g, "$1ss$2"); // с zwischen Vokal und ь+Vokal = ss
@@ -1014,7 +1009,7 @@ function transcribe (){
 		var transliteration = transliteration.replace(/д/g, "d");
 		var transliteration = transliteration.replace(/е/g, "e"); 
 		var transliteration = transliteration.replace(/ж/g, "ž");
-		var transliteration = transliteration.replace(/з/g, "s");
+		var transliteration = transliteration.replace(/з/g, "z");
 		var transliteration = transliteration.replace(/і/g, "i");
 		var transliteration = transliteration.replace(/ї/g, "ï");
 		var transliteration = transliteration.replace(/и/g, "y");
