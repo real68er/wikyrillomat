@@ -663,6 +663,80 @@ function transcribe (){
 		var transliteration = ""; // Zeile löschen, wenn Transliterationsregeln für diese Sprache eingetragen wurden
 		var transliteration = transliteration.replace(/ /g, " ");
 		break;
+	case "mk":
+		// Setzen der Vorlage für die kyrillische Darstellung
+		var template = "mkS-Cyrl";
+		// Initialisierung der Warnbox
+		var transcriptionAlert = document.getElementById("transcriptionAlert");
+		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich, Komma, Zeilenumbrüche, Tabs und Whitespaces sind ok)
+		var testedTranscription = transcription.replace(/[АБВГДЃЕЖЗЅИЈКЛЉМНЊОПРСТЌУФХЦЧЏШабвгдѓежзѕијклљмнњопрстќуфхцчџш  \-,\n\r\t\s]/gi, '');
+		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
+		// ab hier wird ganz doof Regel nach Regel abgearbeitet
+		// Einzelbuchstaben
+		var transcription = transcription.replace(/А/g, "A");
+		var transcription = transcription.replace(/Б/g, "B");
+		var transcription = transcription.replace(/В/g, "V");
+		var transcription = transcription.replace(/Г/g, "G");
+		var transcription = transcription.replace(/Д/g, "D");
+		var transcription = transcription.replace(/Ѓ/g, "Gj");
+		var transcription = transcription.replace(/Е/g, "E");
+		var transcription = transcription.replace(/Ж/g, "Ž");
+		var transcription = transcription.replace(/З/g, "Z");
+		var transcription = transcription.replace(/Ѕ/g, "Dz");
+		var transcription = transcription.replace(/И/g, "I");
+		var transcription = transcription.replace(/Ј/g, "J");
+		var transcription = transcription.replace(/К/g, "K");
+		var transcription = transcription.replace(/Л/g, "L");
+		var transcription = transcription.replace(/Љ/g, "Lj");
+		var transcription = transcription.replace(/М/g, "M");
+		var transcription = transcription.replace(/Н/g, "N");
+		var transcription = transcription.replace(/Њ/g, "Nj");
+		var transcription = transcription.replace(/О/g, "O");
+		var transcription = transcription.replace(/П/g, "P");
+		var transcription = transcription.replace(/Р/g, "R");
+		var transcription = transcription.replace(/С/g, "S");
+		var transcription = transcription.replace(/Т/g, "T");
+		var transcription = transcription.replace(/Ќ/g, "Ć");
+		var transcription = transcription.replace(/У/g, "U");
+		var transcription = transcription.replace(/Ф/g, "F");
+		var transcription = transcription.replace(/Х/g, "H");
+		var transcription = transcription.replace(/Ц/g, "C");
+		var transcription = transcription.replace(/Ч/g, "Č");
+		var transcription = transcription.replace(/Џ/g, "Dž");
+		var transcription = transcription.replace(/Ш/g, "Š");
+		var transcription = transcription.replace(/а/g, "a");
+		var transcription = transcription.replace(/б/g, "b");
+		var transcription = transcription.replace(/в/g, "v");
+		var transcription = transcription.replace(/г/g, "g");
+		var transcription = transcription.replace(/д/g, "d");
+		var transcription = transcription.replace(/ѓ/g, "gj");
+		var transcription = transcription.replace(/е/g, "e"); 
+		var transcription = transcription.replace(/ж/g, "ž");
+		var transcription = transcription.replace(/з/g, "z");
+		var transcription = transcription.replace(/ѕ/g, "dz");
+		var transcription = transcription.replace(/и/g, "i");
+		var transcription = transcription.replace(/ј/g, "i");
+		var transcription = transcription.replace(/к/g, "k");
+		var transcription = transcription.replace(/л/g, "l");
+		var transcription = transcription.replace(/љ/g, "lj");
+		var transcription = transcription.replace(/м/g, "m");
+		var transcription = transcription.replace(/н/g, "n");
+		var transcription = transcription.replace(/њ/g, "nj");
+		var transcription = transcription.replace(/о/g, "o");
+		var transcription = transcription.replace(/п/g, "p");
+		var transcription = transcription.replace(/р/g, "r");
+		var transcription = transcription.replace(/с/g, "s");
+		var transcription = transcription.replace(/т/g, "t");
+		var transcription = transcription.replace(/ќ/g, "ć");
+		var transcription = transcription.replace(/у/g, "u");
+		var transcription = transcription.replace(/ф/g, "f");
+		var transcription = transcription.replace(/х/g, "h");
+		var transcription = transcription.replace(/ц/g, "c");
+		var transcription = transcription.replace(/ч/g, "č");
+		var transcription = transcription.replace(/џ/g, "dž");
+		var transcription = transcription.replace(/ш/g, "š");
+		break;
 	case "mn":
 		// Setzen der Vorlage für die kyrillische Darstellung
 		var template = "mnS-Cyrl";
@@ -974,6 +1048,82 @@ function transcribe (){
 		var transliteration = transliteration.replace(/э/g, "ė");
 		var transliteration = transliteration.replace(/ю/g, "ju");
 		var transliteration = transliteration.replace(/я/g, "ja");
+		break;
+	case "sr":
+		// Setzen der Vorlage für die kyrillische Darstellung
+		var template = "srS-Cyrl";
+		// Initialisierung der Warnbox
+		var transcriptionAlert = document.getElementById("transcriptionAlert");
+		transcriptionAlert.innerText = 0; transcriptionAlert.style.display = 'none';
+		// für alle Zeichen, die nicht zwischen den eckigen Klammern stehen, wird eine Warnung ausgegeben (Leerzeichen, Bindestrich, Komma, Zeilenumbrüche, Tabs und Whitespaces sind ok)
+		var testedTranscription = transcription.replace(/[АБВГДЂЕЖЗ́ЗИЈКЛЉМНЊОПРС́СТЋУФХЦЧЏШабвгдђежз́зијклљмнњопрс́стћуфхцчџш  \-,\n\r\t\s]/gi, '');
+		if (testedTranscription.length > 0) { transcriptionAlert.innerText = 'Der Originaltext enthält folgende Zeichen, die nicht transkribiert werden: '+testedTranscription; transcriptionAlert.style.display = 'inherit'; }
+		// ab hier wird ganz doof Regel nach Regel abgearbeitet
+		// Einzelbuchstaben
+		var transcription = transcription.replace(/А/g, "A");
+		var transcription = transcription.replace(/Б/g, "B");
+		var transcription = transcription.replace(/В/g, "V");
+		var transcription = transcription.replace(/Г/g, "G");
+		var transcription = transcription.replace(/Д/g, "D");
+		var transcription = transcription.replace(/Ђ/g, "Đ");
+		var transcription = transcription.replace(/Е/g, "E");
+		var transcription = transcription.replace(/Ж/g, "Ž");
+		var transcription = transcription.replace(/З/g, "Z");
+		var transcription = transcription.replace(/́З/g, "Ź");
+		var transcription = transcription.replace(/И/g, "I");
+		var transcription = transcription.replace(/Ј/g, "J");
+		var transcription = transcription.replace(/К/g, "K");
+		var transcription = transcription.replace(/Л/g, "L");
+		var transcription = transcription.replace(/Љ/g, "Lj");
+		var transcription = transcription.replace(/М/g, "M");
+		var transcription = transcription.replace(/Н/g, "N");
+		var transcription = transcription.replace(/Њ/g, "Nj");
+		var transcription = transcription.replace(/О/g, "O");
+		var transcription = transcription.replace(/П/g, "P");
+		var transcription = transcription.replace(/Р/g, "R");
+		var transcription = transcription.replace(/С/g, "S");
+		var transcription = transcription.replace(/́С/g, "Ś");
+		var transcription = transcription.replace(/Т/g, "T");
+		var transcription = transcription.replace(/Ћ/g, "Ć");
+		var transcription = transcription.replace(/У/g, "U");
+		var transcription = transcription.replace(/Ф/g, "F");
+		var transcription = transcription.replace(/Х/g, "H");
+		var transcription = transcription.replace(/Ц/g, "C");
+		var transcription = transcription.replace(/Ч/g, "Č");
+		var transcription = transcription.replace(/Џ/g, "Dž");
+		var transcription = transcription.replace(/Ш/g, "Š");
+		var transcription = transcription.replace(/а/g, "a");
+		var transcription = transcription.replace(/б/g, "b");
+		var transcription = transcription.replace(/в/g, "v");
+		var transcription = transcription.replace(/г/g, "g");
+		var transcription = transcription.replace(/д/g, "d");
+		var transcription = transcription.replace(/ђ/g, "đ");
+		var transcription = transcription.replace(/е/g, "e"); 
+		var transcription = transcription.replace(/ж/g, "ž");
+		var transcription = transcription.replace(/з/g, "z");
+		var transcription = transcription.replace(/́з/g, "ź");
+		var transcription = transcription.replace(/и/g, "i");
+		var transcription = transcription.replace(/ј/g, "i");
+		var transcription = transcription.replace(/к/g, "k");
+		var transcription = transcription.replace(/л/g, "l");
+		var transcription = transcription.replace(/љ/g, "lj");
+		var transcription = transcription.replace(/м/g, "m");
+		var transcription = transcription.replace(/н/g, "n");
+		var transcription = transcription.replace(/њ/g, "nj");
+		var transcription = transcription.replace(/о/g, "o");
+		var transcription = transcription.replace(/п/g, "p");
+		var transcription = transcription.replace(/р/g, "r");
+		var transcription = transcription.replace(/с/g, "s");
+		var transcription = transcription.replace(/́с/g, "ś");
+		var transcription = transcription.replace(/т/g, "t");
+		var transcription = transcription.replace(/ћ/g, "ć");
+		var transcription = transcription.replace(/у/g, "u");
+		var transcription = transcription.replace(/ф/g, "f");
+		var transcription = transcription.replace(/х/g, "h");
+		var transcription = transcription.replace(/ц/g, "c");
+		var transcription = transcription.replace(/ч/g, "č");
+		var transcription = transcription.replace(/џ/g, "dž");
+		var transcription = transcription.replace(/ш/g, "š");
 		break;
 	case "tg":
 		// Setzen der Vorlage für die kyrillische Darstellung
@@ -1421,8 +1571,10 @@ function transcribe (){
 			<option value="ka">Georgisch</option>
 			<option value="kk">Kasachisch</option>
 			<option value="ky">Kirgisisch</option>
+			<option value="mk">Mazedonisch</option>
 			<option value="mn">Mongolisch</option>
 			<option value="ru" selected>Russisch</option>
+			<option value="sr">Serbisch (und Montenegrinisch)</option>
 			<option value="tg">Tadschikisch</option>
 			<option value="uk">Ukrainisch</option>
 			<option value="be">Weißrussisch</option>
