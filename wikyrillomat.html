@@ -3,8 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Content-Security-Policy: erlaubt nur Skripte/Styles von cdnjs und das per Hash freigegebene Inline-Skript -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-b7JBLMhxmXY60py9uUivsBmYXgA2wFcWUHuOQ7uXR1g=' https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data:; base-uri 'none'; object-src 'none'; frame-ancestors 'none'">
 <!-- Bootstrap CSS (4.6.2, mit SRI) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.2/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <!-- https://github.com/simonwhitaker/github-fork-ribbon-css (mit SRI) -->
@@ -1066,7 +1064,7 @@ function transcribe (){
 		transcription = transcription.replace(/з/g, "z");
 		transcription = transcription.replace(/́з/g, "ź");
 		transcription = transcription.replace(/и/g, "i");
-		transcription = transcription.replace(/ј/g, "j");
+		transcription = transcription.replace(/ј/g, "i");
 		transcription = transcription.replace(/к/g, "k");
 		transcription = transcription.replace(/л/g, "l");
 		transcription = transcription.replace(/љ/g, "lj");
